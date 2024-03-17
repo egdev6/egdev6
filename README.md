@@ -5,12 +5,7 @@ Bienvenid@s! Soy desarrollador con más 6 años de experiencia en desarrollo fro
 ## <img src="https://media.giphy.com/media/iY8CRBdQXODJSCERIr/giphy.gif" width="35"><b style="position:relative;bottom:20px;"> Github Stats:</b>          
   <p align="center">
     <a href="https://github.com/egdev6/">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=egdev6&langs_count=6&theme=gruvbox&layout=compact&hide_border=true" alt="egdev6 :: overall Top Langs " />
-    </a>
-  </p>
-  <p align="center">
-    <a href="https://github.com/egdev6/">
-      <img width="45%" src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=egdev6&theme=moonlight" alt="egdev6 :: Top Langs by repo" />
+      <img width="45%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=egdev6&langs_count=6&theme=gruvbox&layout=compact&hide_border=true" />
       <img width="45%" src = "https://github-readme-streak-stats.herokuapp.com?user=egdev6&theme=dark&hide_border=true" />
     </a>
   </p>
