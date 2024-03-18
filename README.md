@@ -43,7 +43,7 @@ I have participated in important projects and with large national and internatio
 
 
 
-## 🏆 <b>GitHub Thropies:</b>
+## <img src="https://i.gifer.com/4QYo.gif"/> <b>GitHub Thropies:</b>
 
 [![trophy](https://github-profile-trophy.vercel.app/?username=egdev6&theme=onedark)](https://github.com/egdev6/github-profile-trophy)
 
