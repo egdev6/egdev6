@@ -8,8 +8,8 @@ I am specialized in web environments with HTML, CSS and Javascript, doing much o
 I have participated in important projects and with large national and international clients such as LaLiga, Naturgy, Nationale Nederlanden, Telpark, Globalvía, Schär, among others.
 ## <img src="https://media.giphy.com/media/iY8CRBdQXODJSCERIr/giphy.gif" width="35"><b style="position:relative;bottom:20px;"> Github Stats:</b>          
   <div style="display:flex;">
-      <img width="45%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=egdev6&langs_count=6&theme=gruvbox&layout=compact&hide_border=true" />
-      <img width="55%" src="https://github-readme-streak-stats.herokuapp.com?user=egdev6&theme=blood-dark&border_radius=5&date_format=n%2Fj%5B%2FY%5D" alt="GitHub Streak" />
+      <img width="42%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=egdev6&langs_count=6&theme=gruvbox&layout=compact&hide_border=true" />
+      <img width="56%" src="https://github-readme-streak-stats.herokuapp.com?user=egdev6&theme=blood-dark&border_radius=5&date_format=n%2Fj%5B%2FY%5D" alt="GitHub Streak" />
   </div>
 ## <img src="https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width ="25"><b> Other Skills:</b>
 
