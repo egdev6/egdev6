@@ -33,10 +33,6 @@ I have participated in important projects and with large national and internatio
 
 [![trophy](https://github-profile-trophy.vercel.app/?username=egdev6)](https://github.com/egdev6/github-profile-trophy)
 
-## Projects
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=egdev6&repo=egdev-react-boilerplate)](https://github.com/egdev6/egdev-react-boilerplate))
-
 ## <img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/handshake.gif" width ="80"><b> Let's Connect..!</b>
 <div align="center">
 
