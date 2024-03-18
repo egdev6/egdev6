@@ -24,7 +24,7 @@ I have participated in important projects and with large national and internatio
 
   <div style="display:flex;">
       <img width="40%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=egdev6&langs_count=6&theme=calm&layout=compact&hide_border=true" />
-      <img width="56%" src="https://github-readme-streak-stats.herokuapp.com?user=egdev6&theme=calm&border_radius=5&date_format=n%2Fj%5B%2FY%5D" alt="GitHub Streak" />
+      <img width="56%" src="https://github-readme-streak-stats.herokuapp.com?user=egdev6&theme=calm&border_radius=5&date_format=n%2Fj%5B%2FY%5D&hide_border=true" alt="GitHub Streak" />
   </div>
   
 ## <img src="https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width ="25"><b> Other Skills:</b>
