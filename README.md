@@ -29,6 +29,14 @@ I have participated in important projects and with large national and internatio
   
 ## <img src="https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width ="25"><b> Other Skills:</b>
 
+## GitHub Thropies 🏆 :
+
+<br>
+
+[![trophy](https://github-profile-trophy.vercel.app/?username=egdev6)](https://github.com/egdev6/github-profile-trophy)
+
+<br>
+
 ## <img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/handshake.gif" width ="80"><b> Let's Connect..!</b>
 <div align="center">
 
