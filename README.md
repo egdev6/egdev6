@@ -7,6 +7,8 @@
 
 </div>
 
+
+
 <p align="center">
   <a href="github.com/egdev6" target="blank"><img align="center" 
      src="https://komarev.com/ghpvc/?username=egdev6&style=for-the-badge&label=PROFILE+VIEWS" height="25"
@@ -20,12 +22,16 @@ I am specialized in web environments with HTML, CSS and Javascript, doing much o
 
 I have participated in important projects and with large national and international clients such as LaLiga, Naturgy, Nationale Nederlanden, Telpark, Globalvía, Schär, among others.
 
+
+
 ## <img src="https://media.giphy.com/media/iY8CRBdQXODJSCERIr/giphy.gif" width="35"><b style="position:relative;bottom:20px;"> Github Stats:</b>          
 
   <div style="display:flex;">
       <img width="40%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=egdev6&langs_count=6&theme=calm&layout=compact&hide_border=true" />
       <img width="56%" src="https://github-readme-streak-stats.herokuapp.com?user=egdev6&theme=calm&border_radius=5&date_format=n%2Fj%5B%2FY%5D&hide_border=true" alt="GitHub Streak" />
   </div>
+
+  
   
 ## <img src="https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width ="25"><b> Other Skills:</b>
 
@@ -35,9 +41,13 @@ I have participated in important projects and with large national and internatio
 
 </div>
 
+
+
 ## 🏆 <b>GitHub Thropies:</b>
 
 [![trophy](https://github-profile-trophy.vercel.app/?username=egdev6&theme=onedark)](https://github.com/egdev6/github-profile-trophy)
+
+
 
 ## <img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/handshake.gif" width ="80"><b> Let's Connect..!</b>
 <div align="center">
