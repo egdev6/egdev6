@@ -31,11 +31,11 @@ I have participated in important projects and with large national and internatio
 
 ## 🏆 <b>GitHub Thropies:</b>
 
-<br>
-
 [![trophy](https://github-profile-trophy.vercel.app/?username=egdev6)](https://github.com/egdev6/github-profile-trophy)
 
-<br>
+## Projects
+
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=egdev6)](https://github.com/egdev6)
 
 ## <img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/handshake.gif" width ="80"><b> Let's Connect..!</b>
 <div align="center">
