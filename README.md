@@ -33,7 +33,7 @@ I have participated in important projects and with large national and internatio
 
 ## 🏆 <b>GitHub Thropies:</b>
 
-[![trophy](https://github-profile-trophy.vercel.app/?username=egdev6)](https://github.com/egdev6/github-profile-trophy)
+[![trophy](https://github-profile-trophy.vercel.app/?username=egdev6&theme=onedark)](https://github.com/egdev6/github-profile-trophy)
 
 ## <img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/handshake.gif" width ="80"><b> Let's Connect..!</b>
 <div align="center">
