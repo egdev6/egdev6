@@ -1,5 +1,4 @@
-[![Linkedin-egdev-Mesa-de-trabajo-1.png](https://i.postimg.cc/FKJyrbpd/Linkedin-egdev-Mesa-de-trabajo-1.png)](https://postimg.cc/HJdc3yfd)
-
+[![linkedin-banner.jpg](https://i.postimg.cc/L8gtNpvY/linkedin-banner.jpg)](https://postimg.cc/LJRg8Gc2)
 
 <div align="center">
   
