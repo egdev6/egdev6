@@ -1,4 +1,4 @@
-[![Mesa-de-trabajo-1-3x.png](https://i.postimg.cc/J0RMJkRs/Mesa-de-trabajo-1-3x.png)](https://postimg.cc/Hcvq1jcm)
+[![Cabecera-Linkedin.png](https://i.postimg.cc/xC7VMyzT/Cabecera-Linkedin.png)](https://postimg.cc/ftxPhdC6)
 
 <div align="center">
   
