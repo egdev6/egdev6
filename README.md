@@ -18,7 +18,7 @@
 
 ##  <img src = "https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/about_me.gif" width="50px"><b> About Me:</b>
 
-Welcome! I am a developer with more than 6 years of experience in frontend development.
+Welcome! I am a developer with more than 7 years of experience in frontend development.
 
 I am specialized in web environments with HTML, CSS and Javascript, doing much of my work in the React / Next.js / Redux ecosystem.
 
