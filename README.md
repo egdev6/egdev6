@@ -22,7 +22,7 @@ Welcome! I am a developer with more than 7 years of experience in frontend devel
 
 I am specialized in web environments with HTML, CSS and Javascript, doing much of my work in the React / Next.js / Redux ecosystem.
 
-I have participated in important projects and with large national and international clients such as LaLiga, Naturgy, Nationale Nederlanden, Telpark, Globalvía, Schär, among others.
+I have participated in important projects and with large national and international clients such as Lidl, LaLiga, Naturgy, Nationale Nederlanden, Telpark, Globalvía, Schär, among others.
 
 
 
