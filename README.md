@@ -1,4 +1,5 @@
-[![Cabecera-Linkedin.png](https://i.postimg.cc/xC7VMyzT/Cabecera-Linkedin.png)](https://postimg.cc/ftxPhdC6)
+![Cabecera-Linkedin.png](https://github.com/user-attachments/assets/c788697b-c815-48e0-ae4e-815cda919a38)
+
 
 <div align="center">
   
