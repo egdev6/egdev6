@@ -1,6 +1,4 @@
 ![Cabecera Linkedin 4](https://github.com/user-attachments/assets/f3f13fff-7765-4838-b6f1-d2be194132bc)
--attachments/assets/c788697b-c815-48e0-ae4e-815cda919a38)
-
 
 <div align="center">
   
