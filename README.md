@@ -1,7 +1,7 @@
 
 ![Cabecera Github](https://github.com/user-attachments/assets/937f31d8-165b-49b3-bfbe-bcd87df97646)
 
-# 👋 Hi, I'm Enrique (egdev6)
+# 👋 Hi, I'm Quique (egdev6)
 
 Frontend Developer focused on **AI-powered developer workflows**.
 
