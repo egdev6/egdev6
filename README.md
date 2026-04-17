@@ -56,6 +56,7 @@ I’m organizing **Stack & Flow**, a developer community where we:
 
 # ⚙️ Tooling & Experiments
 
+- Agent teams → VSCode extension
 - Compilot CLI → code generation & automation  
 - React Boilerplate → scalable frontend architecture  
 
