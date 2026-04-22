@@ -1,5 +1,4 @@
-
-![Cabecera Github](https://github.com/user-attachments/assets/937f31d8-165b-49b3-bfbe-bcd87df97646)
+![Cabecera Github](https://github.com/user-attachments/assets/9649a2a4-0220-4a8e-8999-8b3693c0405d)
 
 # 👋 Hi, I'm Quique (egdev6)
 
@@ -85,6 +84,7 @@ I’m organizing **Stack & Flow**, a developer community where we:
 [![LinkedIn](https://img.shields.io/badge/Linkedin-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/egdev/)
 [![Twitch](https://img.shields.io/badge/Twitch-A970FF?style=for-the-badge&logo=twitch&logoColor=white)](https://www.twitch.tv/egdev6/)
 [![YouTube](https://img.shields.io/badge/Youtube-FF0033?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@egdev6)
+[![X](https://img.shields.io/badge/x-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/egdev66)
 
 </div>
 
