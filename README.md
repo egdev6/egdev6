@@ -91,7 +91,8 @@ I’m organizing **Stack & Flow**, a developer community where we:
 
 # 🤝 Let's connect
 
-- 💼 LinkedIn → where I share content about dev, AI & tooling  
+- 💼 LinkedIn → where I share content about dev, AI & tooling
+- ✖️ X → Where I share events and Twitch content
 - 🎥 YouTube → talks, deep dives and experiments  
 - 🎮 Twitch → live coding & real workflows  
 - 💬 Discord → Stack & Flow community  
