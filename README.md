@@ -35,7 +35,7 @@ Contributing to **Engram**, a persistent memory system for AI agents.
 - Memory persistence across tools
 - AI integration in real dev environments
 
-👉 https://github.com/GentlemanProgramming/engram
+👉 https://github.com/Gentleman-Programming/engram
 
 This work connects directly with:
 - engram-monitor  
