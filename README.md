@@ -1,4 +1,4 @@
-<img width="5120" height="1440" alt="Cabecera Linkedin 6" src="https://github.com/user-attachments/assets/3ce69aae-5ff3-4181-8852-f9ad99607023" />
+<img width="5120" height="1440" alt="Cabecera Linkedin 6" src="https://github.com/user-attachments/assets/602e6989-57bf-413a-bb4e-38a92effb97b" />
 
 # 👋 Hi, I'm Quique (egdev6)
 
