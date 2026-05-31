@@ -12,17 +12,24 @@ I build tools, systems and communities around:
 
 # 🚀 What I'm building
 
-### 🧠 engram-monitor
-Monitoring and observability for AI memory systems and agent workflows.
-
-👉 https://github.com/egdev6/engram-monitor
-
----
-
 ### 🎨 Stack & Flow Design System
 Collaborative design system focused on scalability, accessibility and real-world usage.
 
 👉 https://github.com/Stack-and-Flow/design-system
+
+---
+
+### 🤖 Egdev Dashboard
+Intended portable OpenClaw workspace for running Gentle-AI-powered social-content operations with persistent Engram memory.
+
+👉 https://github.com/egdev6/egdev-dashboard
+
+---
+
+### 🧠 engram-monitor
+Monitoring and observability for AI memory systems and agent workflows.
+
+👉 https://github.com/egdev6/engram-monitor
 
 
 # 🤝 Open Source Contributions
