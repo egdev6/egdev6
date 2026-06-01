@@ -19,10 +19,10 @@ Collaborative design system focused on scalability, accessibility and real-world
 
 ---
 
-### 🤖 Egdev Dashboard
-Intended portable OpenClaw workspace for running Gentle-AI-powered social-content operations with persistent Engram memory.
+### 🤖 Discord Project Manager
+Portable Discord-first project operations cockpit for turning ideas into issues, specs, context, and AI-assisted workflows. discord-project-manager combines OpenClaw runtime experiments, Gentle-AI SDD practices, and Engram-backed memory in one repo so planning, coordination, and future automation share the same baseline.
 
-👉 https://github.com/egdev6/egdev-dashboard
+👉 https://github.com/egdev6/discord-project-manager
 
 ---
 
