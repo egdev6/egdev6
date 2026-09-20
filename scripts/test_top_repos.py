@@ -9,6 +9,7 @@ Never touches the real README.md.
 from __future__ import annotations
 
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -470,6 +471,162 @@ def case_15_list_parsing() -> None:
     report(15, "whitespace and empty entries in the target list are tolerated", passed, observed)
 
 
+def case_16_invalid_targets() -> None:
+    """SYMLINK 1: symlink, missing, and directory targets fail before any write."""
+    with tempfile.TemporaryDirectory() as directory:
+        real = make_temp_readme(directory)
+        link = os.path.join(directory, "README.link.md")
+        os.symlink(real, link)
+        real_before = read_bytes(real)
+        cli_args = ["--input", os.path.relpath(FIXTURE, REPO_ROOT)]
+
+        # A symlink target must fail loudly and leave the link and the file
+        # it points at untouched (the old behavior replaced the link with a
+        # regular file and exited 0).
+        result = run_cli(cli_args, {"TOP_REPOS_EXCLUDE": "dotfiles", "TOP_REPOS_README": link})
+        stderr = result.stderr.strip()
+        symlink_case = (
+            result.returncode != 0
+            and "error:" in stderr
+            and link in stderr
+            and "symbolic link" in stderr
+            and "Traceback" not in stderr
+            and os.path.islink(link)
+            and read_bytes(real) == real_before
+        )
+
+        # A symlink as the SECOND target must abort before the FIRST target
+        # is written (validation happens before any write at all).
+        second = os.path.join(directory, "README.second.md")
+        with open(second, "w", encoding="utf-8", newline="") as handle:
+            handle.write(readme_template("SENTINEL-2-BEGIN-42", "SENTINEL-2-END-77"))
+        second_before = read_bytes(second)
+        result_order = run_cli(
+            cli_args,
+            {"TOP_REPOS_EXCLUDE": "dotfiles", "TOP_REPOS_README": f"{second},{link}"},
+        )
+        before_any_write = (
+            result_order.returncode != 0
+            and "error:" in result_order.stderr
+            and link in result_order.stderr
+            and read_bytes(second) == second_before
+            and os.path.islink(link)
+        )
+
+        # A missing target must fail with the same clarity.
+        missing = os.path.join(directory, "README.missing.md")
+        result_missing = run_cli(cli_args, {"TOP_REPOS_README": missing})
+        missing_case = (
+            result_missing.returncode != 0
+            and "error:" in result_missing.stderr
+            and missing in result_missing.stderr
+            and "does not exist" in result_missing.stderr
+            and "Traceback" not in result_missing.stderr
+        )
+
+        # A directory target must fail with the same clarity.
+        subdir = os.path.join(directory, "docs")
+        os.mkdir(subdir)
+        result_dir = run_cli(cli_args, {"TOP_REPOS_README": subdir})
+        dir_case = (
+            result_dir.returncode != 0
+            and "error:" in result_dir.stderr
+            and subdir in result_dir.stderr
+            and "directory" in result_dir.stderr
+            and "Traceback" not in result_dir.stderr
+        )
+
+    passed = symlink_case and before_any_write and missing_case and dir_case
+    observed = (
+        f"symlink_loud_and_untouched={symlink_case} "
+        f"aborts_before_any_write={before_any_write} "
+        f"missing_loud={missing_case} directory_loud={dir_case}"
+    )
+    report(16, "symlink, missing, and directory targets fail loudly before any write", passed, observed)
+
+
+def case_17_workflow_drift() -> None:
+    """DRIFT 1: the workflow stages exactly the TOP_REPOS_README targets.
+
+    The git add line must derive its paths from the TOP_REPOS_README env
+    value (single source of truth). The workflow is parsed with plain string
+    handling (no YAML library) and the case fails when either side of the
+    invariant gains or loses a path.
+    """
+    workflow_path = os.path.join(REPO_ROOT, ".github", "workflows", "top-repos.yml")
+    with open(workflow_path, "r", encoding="utf-8") as handle:
+        lines = handle.read().splitlines()
+
+    env_value: str | None = None
+    git_add_lines: list[str] = []
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith("#"):
+            continue
+        env_match = re.match(r'^TOP_REPOS_README:\s*(["\']?)(.*)\1\s*$', stripped)
+        if env_match and env_value is None:
+            env_value = env_match.group(2).strip()
+        if re.match(r"^git\s+add\b", stripped):
+            git_add_lines.append(stripped)
+
+    problems: list[str] = []
+    staged: set[str] = set()
+    env_set: set[str] = set()
+    if env_value is None:
+        problems.append("could not find a TOP_REPOS_README entry in the workflow env section")
+    else:
+        env_set = {entry.strip() for entry in env_value.split(",") if entry.strip()}
+        if not env_set:
+            problems.append(f"TOP_REPOS_README env value {env_value!r} parses to no paths")
+
+    if len(git_add_lines) != 1:
+        problems.append(
+            f"expected exactly one 'git add' line in the commit step, "
+            f"found {len(git_add_lines)}: {git_add_lines!r}"
+        )
+    elif env_set:
+        literal_paths: list[str] = []
+        references = 0
+        # Bash-style expansions may contain spaces inside the braces (for
+        # example ${TOP_REPOS_README//,/ }), so tokenize them atomically.
+        args_tokens = re.findall(r"\$\{[^}]*\}|\S+", git_add_lines[0][len("git add"):].strip())
+        for token in args_tokens:
+            if "TOP_REPOS_README" in token:
+                references += 1
+            elif "$" in token or "{" in token:
+                problems.append(
+                    f"git add references an unexpected shell expression {token!r} "
+                    "instead of TOP_REPOS_README"
+                )
+            else:
+                literal_paths.append(token)
+        if references == 0:
+            problems.append(
+                "git add hardcodes its paths and never references "
+                "TOP_REPOS_README; the env value must be the single source of truth"
+            )
+        if literal_paths:
+            problems.append(
+                f"git add hardcodes extra paths {literal_paths!r} that bypass TOP_REPOS_README"
+            )
+        if references > 0 and not literal_paths:
+            # The staged set is derived from the env value, so it must equal it.
+            staged = set(env_set)
+
+    if staged != env_set:
+        problems.append(
+            f"workflow drift: git add stages {sorted(staged)} but "
+            f"TOP_REPOS_README lists {sorted(env_set)}"
+        )
+
+    passed = not problems
+    observed = "; ".join(problems) if problems else (
+        f"git_add={git_add_lines[0]!r} stages={sorted(staged)} "
+        f"top_repos_readme={sorted(env_set)}"
+    )
+    report(17, "the workflow stages exactly the TOP_REPOS_README targets from one source of truth", passed, observed)
+
+
 def main() -> int:
     case_1()
     case_2()
@@ -485,6 +642,8 @@ def main() -> int:
     case_13_mixed_line_endings()
     case_14_two_target_idempotence()
     case_15_list_parsing()
+    case_16_invalid_targets()
+    case_17_workflow_drift()
     if failures:
         print(f"FAILED: {len(failures)} case(s) failed: {', '.join(failures)}")
         return 1

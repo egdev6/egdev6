@@ -48,8 +48,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Keep this list in sync with the TOP_REPOS_README env value.
-          git add README.md README.es.md
+          # Stage exactly the TOP_REPOS_README targets: the env value above
+          # is the single source of truth, so a new target only ever needs
+          # one edit. Unquoted expansion of the comma-to-space substitution
+          # word-splits the list and drops blank entries.
+          git add ${TOP_REPOS_README//,/ }
           # Staged-diff guard: never create an empty commit.
           if git diff --cached --quiet; then
             echo "No README changes; skipping commit."

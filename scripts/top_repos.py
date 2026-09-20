@@ -10,7 +10,9 @@ The target list comes from the comma-separated ``TOP_REPOS_README``
 environment variable (default ``README.md``). Targets are validated
 all-or-nothing: the marked region of every target is parsed and the block is
 rendered once BEFORE anything is written, so one invalid target can never
-leave a partially updated set of READMEs.
+leave a partially updated set of READMEs. Targets that must never be
+replaced in place (symbolic links, missing paths, directories) are rejected
+in that same validation phase, before any write.
 
 Standard library only. The script never commits or pushes; the scheduled
 workflow owns committing. It is idempotent: unchanged input does not modify
@@ -275,13 +277,37 @@ def replace_marked_region(content: str, rendered_lines: list[str]) -> str:
     return "".join(new_lines)
 
 
+def validate_target(path: str) -> None:
+    """Reject targets that must never be replaced in place.
+
+    ``write_target`` uses ``os.replace``, which silently swaps a symbolic
+    link target for a regular file and leaves the file the link pointed at
+    stale (exit 0, silent corruption), so symbolic links are rejected here
+    alongside missing paths and directories. This runs during the planning
+    phase, before anything is written to any target.
+    """
+    if os.path.islink(path):
+        raise RuntimeError(
+            f"{path}: target is a symbolic link; refusing to replace it, "
+            "point TOP_REPOS_README at the real file instead"
+        )
+    if not os.path.lexists(path):
+        raise RuntimeError(f"{path}: target does not exist")
+    if os.path.isdir(path):
+        raise RuntimeError(f"{path}: target is a directory, not a README file")
+    if not os.path.isfile(path):
+        raise RuntimeError(f"{path}: target is not a regular file")
+
+
 def plan_target(path: str, rendered_lines: list[str]) -> tuple[str, str]:
     """Validate one target and return ``(current, updated)`` without writing.
 
-    Raises ``RuntimeError`` naming ``path`` when its markers are missing,
-    duplicated, or out of order, so callers can validate every target before
-    writing any of them (all-or-nothing semantics).
+    Raises ``RuntimeError`` naming ``path`` when it is a symbolic link,
+    missing, a directory, or its markers are missing, duplicated, or out of
+    order, so callers can validate every target before writing any of them
+    (all-or-nothing semantics).
     """
+    validate_target(path)
     with open(path, "r", encoding="utf-8", newline="") as handle:
         current = handle.read()
     try:
