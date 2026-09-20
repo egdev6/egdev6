@@ -51,6 +51,8 @@ Organizo **Stack & Flow**, una comunidad de desarrollo donde:
 - Exploramos IA aplicada al trabajo diario  
 - Compartimos conocimiento y crecemos juntos  
 
+Nuestro proyecto insignia es el **[Stack & Flow Design System](https://github.com/Stack-and-Flow/design-system)**, un design system colaborativo pensado para escalar, ser accesible y usarse en el mundo real.
+
 💬 [Entrá al Discord de Stack & Flow](https://discord.gg/xffecBzMEQ) — comunidad de desarrollo, en español  
 🛠️ [Entrá al Discord de Gentleman Programming](https://discord.com/invite/3QVhF5vRsR) — la comunidad open source donde mantengo proyectos  
 

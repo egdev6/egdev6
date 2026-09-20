@@ -51,6 +51,8 @@ I’m organizing **Stack & Flow**, a developer community where we:
 - Explore AI in development workflows  
 - Share knowledge and grow together  
 
+Our flagship project is the **[Stack & Flow Design System](https://github.com/Stack-and-Flow/design-system)**, a collaborative design system built for scalability, accessibility and real-world use.
+
 👉 https://github.com/Stack-and-Flow
 
 
