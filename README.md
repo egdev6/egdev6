@@ -1,5 +1,7 @@
 <img width="5120" height="1440" alt="Banner: Quique (egdev6), Senior Frontend Engineer" src="https://github.com/user-attachments/assets/602e6989-57bf-413a-bb4e-38a92effb97b" />
 
+🇬🇧 **English** · 🇪🇸 [Español](README.es.md)
+
 # 👋 Hi, I'm Quique (egdev6)
 
 Senior Frontend Engineer focused on **AI-powered developer workflows**.

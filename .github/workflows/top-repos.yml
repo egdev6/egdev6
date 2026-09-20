@@ -20,6 +20,12 @@ permissions:
 
 env:
   TOP_N: "5"
+  # TOP_REPOS_README is the comma-separated list of README targets the block
+  # is rendered into: every path listed gets the same generated block between
+  # its markers (for example "README.md,README.es.md"). Blank entries are
+  # ignored; empty falls back to README.md. Targets are validated
+  # all-or-nothing before anything is written.
+  TOP_REPOS_README: "README.md,README.es.md"
   # TOP_REPOS_EXCLUDE is how specific repositories are dropped from the
   # ranking: a comma-separated list of repository names to skip (for example
   # "dotfiles,sandbox"). Blank entries are ignored. Leave empty to include
@@ -42,7 +48,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
+          # Keep this list in sync with the TOP_REPOS_README env value.
+          git add README.md README.es.md
           # Staged-diff guard: never create an empty commit.
           if git diff --cached --quiet; then
             echo "No README changes; skipping commit."

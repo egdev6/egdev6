@@ -105,6 +105,11 @@ def case_2() -> None:
     report(2, "dry-run with empty exclude list renders dotfiles and the exact expected block", passed, observed + "\n  stdout=" + repr(stdout))
 
 
+def readme_template(begin_sentinel: str, end_sentinel: str) -> str:
+    """README_TEMPLATE with distinctive per-target sentinel text."""
+    return README_TEMPLATE.replace("SENTINEL-BEGIN-42", begin_sentinel).replace("SENTINEL-END-77", end_sentinel)
+
+
 def make_temp_readme(directory: str) -> str:
     path = os.path.join(directory, "README.md")
     with open(path, "w", encoding="utf-8", newline="") as handle:
@@ -306,6 +311,165 @@ def case_10_name_escaping() -> None:
     report(10, "markdown control characters in the repository NAME are escaped", passed, observed)
 
 
+def case_11_two_targets() -> None:
+    """MULTI 1: one run updates two targets, each keeping its own bytes."""
+    with tempfile.TemporaryDirectory() as directory:
+        targets = {
+            "md": (os.path.join(directory, "README.md"), readme_template("SENTINEL-BEGIN-42", "SENTINEL-END-77")),
+            "es": (os.path.join(directory, "README.es.md"), readme_template("SENTINEL-ES-BEGIN-42", "SENTINEL-ES-END-77")),
+        }
+        for path, content in targets.values():
+            with open(path, "w", encoding="utf-8", newline="") as handle:
+                handle.write(content)
+        before = {path: read_bytes(path) for path, _ in targets.values()}
+        result = run_cli(
+            ["--input", os.path.relpath(FIXTURE, REPO_ROOT)],
+            {"TOP_REPOS_EXCLUDE": "dotfiles", "TOP_REPOS_README": ",".join(path for path, _ in targets.values())},
+        )
+        passed = result.returncode == 0
+        observed = f"returncode={result.returncode} stderr={result.stderr.strip()}"
+        for label, (path, _) in targets.items():
+            prefix, _, rest = before[path].partition(b"<!-- top-repos:start -->\n")
+            _, _, suffix = rest.partition(b"<!-- top-repos:end -->\n")
+            after = read_bytes(path)
+            new_prefix, _, new_rest = after.partition(b"<!-- top-repos:start -->\n")
+            region, _, new_suffix = new_rest.partition(b"<!-- top-repos:end -->\n")
+            ok = (
+                new_prefix == prefix
+                and new_suffix == suffix
+                and region.decode("utf-8") == EXPECTED_BLOCK_EXCLUDE_DOTFILES
+            )
+            passed = passed and ok
+            observed += f" | {label}: prefix_intact={new_prefix == prefix} suffix_intact={new_suffix == suffix} region_ok={region.decode('utf-8') == EXPECTED_BLOCK_EXCLUDE_DOTFILES}"
+        expected_lines = [f"Updated the top-repositories block in {path}" for path, _ in targets.values()]
+        one_line_per_target = result.stdout.splitlines() == expected_lines
+        passed = passed and one_line_per_target
+        observed += f" | stdout_lines_ok={one_line_per_target}"
+    report(11, "one run updates two targets, each keeping its own surrounding bytes", passed, observed)
+
+
+def case_12_all_or_nothing() -> None:
+    """MULTI 2: an invalid second target must leave the first untouched."""
+    with tempfile.TemporaryDirectory() as directory:
+        md = make_temp_readme(directory)
+        es = os.path.join(directory, "README.es.md")
+        content = readme_template("SENTINEL-ES-BEGIN-42", "SENTINEL-ES-END-77")
+        for marker in ("<!-- top-repos:start -->\n", "<!-- top-repos:end -->\n"):
+            content = content.replace(marker, "")
+        with open(es, "w", encoding="utf-8", newline="") as handle:
+            handle.write(content)
+        before = read_bytes(md)
+        result = run_cli(
+            ["--input", os.path.relpath(FIXTURE, REPO_ROOT)],
+            {"TOP_REPOS_EXCLUDE": "dotfiles", "TOP_REPOS_README": f"{md},{es}"},
+        )
+        stderr = result.stderr.strip()
+        passed = (
+            result.returncode != 0
+            and "error:" in stderr
+            and es in stderr
+            and "Traceback" not in stderr
+            and read_bytes(md) == before
+        )
+        observed = (
+            f"returncode={result.returncode} stderr={stderr!r} "
+            f"names_second_target={es in stderr} first_unmodified={read_bytes(md) == before}"
+        )
+    report(12, "invalid second target fails cleanly and leaves the first target unmodified", passed, observed)
+
+
+def case_13_mixed_line_endings() -> None:
+    """MULTI 3: an LF target and a CRLF target each keep their own convention."""
+    with tempfile.TemporaryDirectory() as directory:
+        md = os.path.join(directory, "README.md")
+        es = os.path.join(directory, "README.es.md")
+        with open(md, "w", encoding="utf-8", newline="") as handle:
+            handle.write(README_TEMPLATE)
+        with open(es, "w", encoding="utf-8", newline="") as handle:
+            handle.write(readme_template("SENTINEL-ES-BEGIN-42", "SENTINEL-ES-END-77").replace("\n", "\r\n"))
+        result = run_cli(
+            ["--input", os.path.relpath(FIXTURE, REPO_ROOT)],
+            {"TOP_REPOS_EXCLUDE": "dotfiles", "TOP_REPOS_README": f"{md},{es}"},
+        )
+        md_after = read_bytes(md)
+        es_after = read_bytes(es)
+        _, _, es_rest = es_after.partition(b"<!-- top-repos:start -->\r\n")
+        es_region, _, es_suffix = es_rest.partition(b"<!-- top-repos:end -->\r\n")
+        expected_md_region = EXPECTED_BLOCK_EXCLUDE_DOTFILES.encode("utf-8")
+        expected_es_region = EXPECTED_BLOCK_EXCLUDE_DOTFILES.replace("\n", "\r\n").encode("utf-8")
+        passed = (
+            result.returncode == 0
+            and b"\r" not in md_after
+            and md_after.partition(b"<!-- top-repos:start -->\n")[2].partition(b"<!-- top-repos:end -->\n")[0] == expected_md_region
+            and es_region == expected_es_region
+            and b"\n" not in es_region.replace(b"\r\n", b"")
+            and es_suffix.endswith(b"No final newline here")
+        )
+        observed = (
+            f"returncode={result.returncode} stderr={result.stderr.strip()} "
+            f"md_has_no_cr={b'\r' not in md_after} "
+            f"md_region_lf={md_after.partition(b'<!-- top-repos:start -->\n')[2].partition(b'<!-- top-repos:end -->\n')[0] == expected_md_region} "
+            f"es_region_crlf={es_region == expected_es_region}"
+        )
+    report(13, "LF and CRLF targets each keep their own line-ending convention", passed, observed)
+
+
+def case_14_two_target_idempotence() -> None:
+    """MULTI 4: a second run over two targets changes neither file."""
+    with tempfile.TemporaryDirectory() as directory:
+        md = make_temp_readme(directory)
+        es = os.path.join(directory, "README.es.md")
+        with open(es, "w", encoding="utf-8", newline="") as handle:
+            handle.write(readme_template("SENTINEL-ES-BEGIN-42", "SENTINEL-ES-END-77"))
+        env = {"TOP_REPOS_EXCLUDE": "dotfiles", "TOP_REPOS_README": f"{md},{es}"}
+        args = ["--input", os.path.relpath(FIXTURE, REPO_ROOT)]
+        first = run_cli(args, env)
+        snapshot = {path: read_bytes(path) for path in (md, es)}
+        second = run_cli(args, env)
+        expected_lines = [f"No changes to the top-repositories block in {path}" for path in (md, es)]
+        passed = (
+            first.returncode == 0
+            and second.returncode == 0
+            and read_bytes(md) == snapshot[md]
+            and read_bytes(es) == snapshot[es]
+            and second.stdout.splitlines() == expected_lines
+        )
+        observed = (
+            f"first_returncode={first.returncode} second_returncode={second.returncode} "
+            f"md_unchanged={read_bytes(md) == snapshot[md]} es_unchanged={read_bytes(es) == snapshot[es]} "
+            f"stdout={second.stdout!r}"
+        )
+    report(14, "a second run over two targets changes neither file and reports no changes", passed, observed)
+
+
+def case_15_list_parsing() -> None:
+    """MULTI 5: whitespace around entries and empty entries are tolerated."""
+    with tempfile.TemporaryDirectory() as directory:
+        md = make_temp_readme(directory)
+        es = os.path.join(directory, "README.es.md")
+        with open(es, "w", encoding="utf-8", newline="") as handle:
+            handle.write(readme_template("SENTINEL-ES-BEGIN-42", "SENTINEL-ES-END-77"))
+        # Leading/trailing whitespace, double spaces inside entries, and an
+        # empty entry between the commas must all be tolerated.
+        result = run_cli(
+            ["--input", os.path.relpath(FIXTURE, REPO_ROOT)],
+            {"TOP_REPOS_EXCLUDE": "dotfiles", "TOP_REPOS_README": f"  {md} ,,  {es}  "},
+        )
+        expected_lines = [f"Updated the top-repositories block in {path}" for path in (md, es)]
+        passed = (
+            result.returncode == 0
+            and result.stdout.splitlines() == expected_lines
+            and EXPECTED_BLOCK_EXCLUDE_DOTFILES in read_bytes(md).decode("utf-8")
+            and EXPECTED_BLOCK_EXCLUDE_DOTFILES in read_bytes(es).decode("utf-8")
+        )
+        observed = (
+            f"returncode={result.returncode} stderr={result.stderr.strip()} stdout={result.stdout!r} "
+            f"md_updated={EXPECTED_BLOCK_EXCLUDE_DOTFILES in read_bytes(md).decode('utf-8')} "
+            f"es_updated={EXPECTED_BLOCK_EXCLUDE_DOTFILES in read_bytes(es).decode('utf-8')}"
+        )
+    report(15, "whitespace and empty entries in the target list are tolerated", passed, observed)
+
+
 def main() -> int:
     case_1()
     case_2()
@@ -316,6 +480,11 @@ def main() -> int:
     case_8_clean_errors()
     case_9_markdown_escaping()
     case_10_name_escaping()
+    case_11_two_targets()
+    case_12_all_or_nothing()
+    case_13_mixed_line_endings()
+    case_14_two_target_idempotence()
+    case_15_list_parsing()
     if failures:
         print(f"FAILED: {len(failures)} case(s) failed: {', '.join(failures)}")
         return 1

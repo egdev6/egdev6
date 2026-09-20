@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
-"""Render a "top repositories by stars" markdown block into README.md.
+"""Render a "top repositories by stars" markdown block into README targets.
 
 Fetches the public repositories of a GitHub user (or reads them from a JSON
 file with --input), filters/sorts them deterministically, and replaces only
 the content between the ``<!-- top-repos:start -->`` and
-``<!-- top-repos:end -->`` marker lines in the README.
+``<!-- top-repos:end -->`` marker lines in every README target.
+
+The target list comes from the comma-separated ``TOP_REPOS_README``
+environment variable (default ``README.md``). Targets are validated
+all-or-nothing: the marked region of every target is parsed and the block is
+rendered once BEFORE anything is written, so one invalid target can never
+leave a partially updated set of READMEs.
 
 Standard library only. The script never commits or pushes; the scheduled
 workflow owns committing. It is idempotent: unchanged input does not modify
-the README.
+any target.
 """
 
 from __future__ import annotations
@@ -43,7 +49,7 @@ class Config:
         self.user = os.environ.get("TOP_REPOS_USER", "egdev6")
         self.top_n = _parse_top_n(os.environ.get("TOP_N", ""))
         self.exclude = _parse_exclude(os.environ.get("TOP_REPOS_EXCLUDE", ""))
-        self.readme_path = os.environ.get("TOP_REPOS_README", "README.md")
+        self.readme_paths = _parse_readme_paths(os.environ.get("TOP_REPOS_README", ""))
         self.token = os.environ.get("GITHUB_TOKEN", "")
 
 
@@ -62,6 +68,18 @@ def _parse_top_n(raw: str) -> int:
 def _parse_exclude(raw: str) -> set[str]:
     """Parse a comma-separated exclusion list, ignoring blank entries."""
     return {entry.strip() for entry in raw.split(",") if entry.strip()}
+
+
+def _parse_readme_paths(raw: str) -> list[str]:
+    """Parse a comma-separated list of README target paths.
+
+    Entries are stripped of surrounding whitespace and blank entries are
+    ignored, so ``"README.md, README.es.md"`` and
+    ``"README.md,README.es.md"`` behave identically. An empty value (or one
+    that yields no entries) falls back to ``README.md``.
+    """
+    paths = [entry.strip() for entry in raw.split(",") if entry.strip()]
+    return paths or ["README.md"]
 
 
 # ---------------------------------------------------------------------------
@@ -257,35 +275,44 @@ def replace_marked_region(content: str, rendered_lines: list[str]) -> str:
     return "".join(new_lines)
 
 
-def update_readme(readme_path: str, rendered_lines: list[str]) -> bool:
-    """Update the marked region of the README atomically.
+def plan_target(path: str, rendered_lines: list[str]) -> tuple[str, str]:
+    """Validate one target and return ``(current, updated)`` without writing.
 
-    Returns True when the file was replaced, False when the content was
-    already identical. The replacement is written to a temporary file in
-    the same directory as the target and then moved into place with
-    ``os.replace``, so a crash or a full disk can never leave a truncated
-    README: on any error the original file survives byte-for-byte.
+    Raises ``RuntimeError`` naming ``path`` when its markers are missing,
+    duplicated, or out of order, so callers can validate every target before
+    writing any of them (all-or-nothing semantics).
     """
-    with open(readme_path, "r", encoding="utf-8", newline="") as handle:
+    with open(path, "r", encoding="utf-8", newline="") as handle:
         current = handle.read()
-    updated = replace_marked_region(current, rendered_lines)
-    if updated == current:
-        return False
-    directory = os.path.dirname(os.path.abspath(readme_path))
+    try:
+        updated = replace_marked_region(current, rendered_lines)
+    except RuntimeError as error:
+        raise RuntimeError(f"{path}: {error}") from error
+    return current, updated
+
+
+def write_target(path: str, updated: str) -> None:
+    """Atomically replace ``path`` with ``updated``.
+
+    The replacement is written to a temporary file in the same directory as
+    the target and then moved into place with ``os.replace``, so a crash or
+    a full disk can never leave a truncated target: on any error the
+    original file survives byte-for-byte.
+    """
+    directory = os.path.dirname(os.path.abspath(path))
     file_descriptor, temp_path = tempfile.mkstemp(dir=directory, prefix=".top-repos-", suffix=".tmp")
     try:
         with os.fdopen(file_descriptor, "w", encoding="utf-8", newline="") as handle:
             handle.write(updated)
         # Preserve the original file's permission bits through the replace.
-        os.chmod(temp_path, stat.S_IMODE(os.stat(readme_path).st_mode))
-        os.replace(temp_path, readme_path)
+        os.chmod(temp_path, stat.S_IMODE(os.stat(path).st_mode))
+        os.replace(temp_path, path)
     except BaseException:
         try:
             os.unlink(temp_path)
         except OSError:
             pass
         raise
-    return True
 
 
 # ---------------------------------------------------------------------------
@@ -293,8 +320,8 @@ def update_readme(readme_path: str, rendered_lines: list[str]) -> bool:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Refresh the top-repositories block in README.md")
-    parser.add_argument("--dry-run", action="store_true", help="Print the rendered block to stdout and do not touch the README")
+    parser = argparse.ArgumentParser(description="Refresh the top-repositories block in the configured README targets")
+    parser.add_argument("--dry-run", action="store_true", help="Print the rendered block to stdout and do not touch any target")
     parser.add_argument("--input", metavar="FILE", help="Read the raw repository array JSON from FILE instead of calling the network")
     args = parser.parse_args(argv)
 
@@ -313,11 +340,20 @@ def main(argv: list[str] | None = None) -> int:
             print(line)
         return 0
 
-    changed = update_readme(config.readme_path, rendered_lines)
-    if changed:
-        print(f"Updated the top-repositories block in {config.readme_path}")
-    else:
-        print(f"No changes to the top-repositories block in {config.readme_path}")
+    # All-or-nothing: parse the marked region of EVERY target and render its
+    # replacement BEFORE writing anything, so an invalid target can never
+    # leave a partially updated set of READMEs.
+    plans: list[tuple[str, str, str]] = []
+    for path in config.readme_paths:
+        current, updated = plan_target(path, rendered_lines)
+        plans.append((path, current, updated))
+
+    for path, current, updated in plans:
+        if updated == current:
+            print(f"No changes to the top-repositories block in {path}")
+            continue
+        write_target(path, updated)
+        print(f"Updated the top-repositories block in {path}")
     return 0
 
 
