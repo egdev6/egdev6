@@ -32,17 +32,20 @@ Monitoring and observability for AI memory systems and agent workflows.
 👉 https://github.com/egdev6/engram-monitor
 
 
-# 🤝 Open Source Contributions
+# 🛠️ Maintainer — Gentleman Programming
 
-### 🧠 Engram (GentlemanProgramming)
+Maintainer of open-source projects at [@Gentleman-Programming](https://github.com/Gentleman-Programming), an organization building agent infrastructure for developers.
 
-Contributing to **Engram**, a persistent memory system for AI agents.
+| Project | What it is | My scope |
+| --- | --- | --- |
+| [engram](https://github.com/Gentleman-Programming/engram) | Persistent memory for AI coding agents (Go, SQLite + FTS5, MCP) | Store and server APIs, TUI |
+| [gentle-shell](https://github.com/Gentleman-Programming/gentle-shell) | Pi harness for senior-architect agent workflows | Shell surfaces, usage panels |
 
-- Multi-agent workflows
-- Memory persistence across tools
-- AI integration in real dev environments
+Merged work:
 
-👉 https://github.com/Gentleman-Programming/engram
+- [DELETE /sessions/{id} and DELETE /prompts/{id} endpoints](https://github.com/Gentleman-Programming/engram/pull/174) — engram #174
+- [TUI session delete confirmation](https://github.com/Gentleman-Programming/engram/pull/444) — engram #444
+- [NaN Cloud per-model usage in the bar and `/gentle:usage` panel](https://github.com/Gentleman-Programming/gentle-shell/pull/1180) — gentle-shell #1180
 
 This work connects directly with:
 - engram-monitor  
