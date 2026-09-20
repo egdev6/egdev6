@@ -1,16 +1,18 @@
-<img width="5120" height="1440" alt="Cabecera Linkedin 6" src="https://github.com/user-attachments/assets/602e6989-57bf-413a-bb4e-38a92effb97b" />
+<img width="5120" height="1440" alt="Banner: Quique (egdev6), Senior Frontend Engineer" src="https://github.com/user-attachments/assets/602e6989-57bf-413a-bb4e-38a92effb97b" />
 
 # 👋 Hi, I'm Quique (egdev6)
 
-Frontend Developer focused on **AI-powered developer workflows**.
+Senior Frontend Engineer focused on **AI-powered developer workflows**.
 
 I build tools, systems and communities around:
 - 🤖 AI agents & multi-agent workflows  
 - ⚙️ Developer tooling & automation  
 - 🌍 Community-driven development  
 
+🌐 Personal site — [egdev.es](https://www.egdev.es/)
 
-# 🚀 What I'm building
+
+## 🚀 What I'm building
 
 ### 🎨 Stack & Flow Design System
 Collaborative design system focused on scalability, accessibility and real-world usage.
@@ -32,7 +34,7 @@ Monitoring and observability for AI memory systems and agent workflows.
 👉 https://github.com/egdev6/engram-monitor
 
 
-# 🛠️ Maintainer — Gentleman Programming
+## 🛠️ Maintainer — Gentleman Programming
 
 Maintainer of open-source projects at [@Gentleman-Programming](https://github.com/Gentleman-Programming), an organization building agent infrastructure for developers.
 
@@ -52,7 +54,7 @@ This work connects directly with:
 - AI agent orchestration workflows  
 
 
-# 🌍 Community
+## 🌍 Community
 
 I’m organizing **Stack & Flow**, a developer community where we:
 
@@ -63,14 +65,14 @@ I’m organizing **Stack & Flow**, a developer community where we:
 👉 https://github.com/Stack-and-Flow
 
 
-# ⚙️ Tooling & Experiments
+## ⚙️ Tooling & Experiments
 
 - Agent teams → VSCode extension
 - Compilot CLI → code generation & automation  
 - React Boilerplate → scalable frontend architecture  
 
 
-# 🧱 Core Stack
+## 🧱 Core Stack
 
 <div align="center">
 
@@ -87,7 +89,7 @@ I’m organizing **Stack & Flow**, a developer community where we:
 </div>
 
 
-# 📢 Content & Platforms
+## 📢 Content & Platforms
 
 <div align="center">
 
@@ -99,7 +101,7 @@ I’m organizing **Stack & Flow**, a developer community where we:
 </div>
 
 
-# 🤝 Let's connect
+## 🤝 Let's connect
 
 - 💼 LinkedIn → where I share content about dev, AI & tooling
 - ✖️ X → Where I share events and Twitch content
@@ -110,7 +112,7 @@ I’m organizing **Stack & Flow**, a developer community where we:
 Feel free to reach out or collaborate  
 
 
-# 📊 GitHub Stats
+## 📊 GitHub Stats
 
 <p align="center">
   <img width="56%" src="https://github-readme-streak-stats.herokuapp.com?user=egdev6&theme=calm&border_radius=5&date_format=n%2Fj%5B%2FY%5D&hide_border=true" />
