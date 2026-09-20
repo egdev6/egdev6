@@ -12,6 +12,15 @@ I build tools, systems and communities around:
 🌐 Personal site — [egdev.es](https://www.egdev.es/)
 
 
+## 📍 Now
+
+_Updated September 2026_
+
+- 🎬 **Developing** — [particle-studio](https://github.com/egdev6/particle-studio): a framework-agnostic visual editor for reusable HTML Canvas animations.
+- 🤝 **Collaborating** — [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): agent configuration, skills and multi-agent workflows for the coding agents you already use.
+- 🔧 **Improving** — [mobile-agent-orchestrator](https://github.com/egdev6/mobile-agent-orchestrator): a guided Pi skill for a secure, persistent mobile AI-agent environment.
+
+
 ## 🚀 What I'm building
 
 ### 🎨 Stack & Flow Design System
@@ -103,11 +112,12 @@ I’m organizing **Stack & Flow**, a developer community where we:
 
 ## 🤝 Let's connect
 
-- 💼 LinkedIn → where I share content about dev, AI & tooling
-- ✖️ X → Where I share events and Twitch content
-- 🎥 YouTube → talks, deep dives and experiments  
-- 🎮 Twitch → live coding & real workflows  
-- 💬 Discord → Stack & Flow community  
+- 💼 [LinkedIn](https://www.linkedin.com/in/egdev/) → where I share content about dev, AI & tooling
+- ✖️ [X](https://x.com/egdev66) → where I share events and Twitch content
+- 🎥 [YouTube](https://www.youtube.com/@egdev6) → talks, deep dives and experiments  
+- 🎮 [Twitch](https://www.twitch.tv/egdev6/) → live coding & real workflows  
+- 💬 [Stack & Flow on Discord](https://discord.gg/xffecBzMEQ) → the developer community I run  
+- 🛠️ [Gentleman Programming on Discord](https://discord.com/invite/3QVhF5vRsR) → the open-source org where I maintain projects  
 
 Feel free to reach out or collaborate  
 
