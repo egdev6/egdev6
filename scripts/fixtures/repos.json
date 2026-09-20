@@ -1,0 +1,119 @@
+[
+  {
+    "name": "mega-tool",
+    "html_url": "https://github.com/egdev6/mega-tool",
+    "description": "A CLI toolbox for everyday automation",
+    "stargazers_count": 1200,
+    "fork": false,
+    "archived": false,
+    "private": false
+  },
+  {
+    "name": "web-frame",
+    "html_url": "https://github.com/egdev6/web-frame",
+    "description": "  A tiny web framework.\nWrapped across two lines.  ",
+    "stargazers_count": 950,
+    "fork": false,
+    "archived": false,
+    "private": false
+  },
+  {
+    "name": "alpha-lib",
+    "html_url": "https://github.com/egdev6/alpha-lib",
+    "description": "Small utility library",
+    "stargazers_count": 500,
+    "fork": false,
+    "archived": false,
+    "private": false
+  },
+  {
+    "name": "beta-lib",
+    "html_url": "https://github.com/egdev6/beta-lib",
+    "description": "Another small library, tied with alpha-lib on stars",
+    "stargazers_count": 500,
+    "fork": false,
+    "archived": false,
+    "private": false
+  },
+  {
+    "name": "silent-repo",
+    "html_url": "https://github.com/egdev6/silent-repo",
+    "description": null,
+    "stargazers_count": 300,
+    "fork": false,
+    "archived": false,
+    "private": false
+  },
+  {
+    "name": "padded-repo",
+    "html_url": "https://github.com/egdev6/padded-repo",
+    "description": "Keeps the eligible pool larger than TOP_N",
+    "stargazers_count": 120,
+    "fork": false,
+    "archived": false,
+    "private": false
+  },
+  {
+    "name": "whitespace-repo",
+    "html_url": "https://github.com/egdev6/whitespace-repo",
+    "description": "   \t  ",
+    "stargazers_count": 280,
+    "fork": false,
+    "archived": false,
+    "private": false
+  },
+  {
+    "name": "markdown-tricky",
+    "html_url": "https://github.com/egdev6/markdown-tricky",
+    "description": "Tricky [x](y) *bold* <b>html</b> and _under_",
+    "stargazers_count": 290,
+    "fork": false,
+    "archived": false,
+    "private": false
+  },
+  {
+    "name": "esc-name]with\\slash",
+    "html_url": "https://github.com/egdev6/esc-name]with\\slash",
+    "description": "Name has a ] bracket and a \\ backslash",
+    "stargazers_count": 20,
+    "fork": false,
+    "archived": false,
+    "private": false
+  },
+  {
+    "name": "secret-project",
+    "html_url": "https://github.com/egdev6/secret-project",
+    "description": "Private repository that must be excluded",
+    "stargazers_count": 10000,
+    "fork": false,
+    "archived": false,
+    "private": true
+  },
+  {
+    "name": "forked-thing",
+    "html_url": "https://github.com/egdev6/forked-thing",
+    "description": "Fork that must be excluded",
+    "stargazers_count": 4000,
+    "fork": true,
+    "archived": false,
+    "private": false
+  },
+  {
+    "name": "archived-old",
+    "html_url": "https://github.com/egdev6/archived-old",
+    "description": "Archived repository that must be excluded",
+    "stargazers_count": 2500,
+    "fork": false,
+    "archived": true,
+    "private": false
+  },
+  {
+    "name": "dotfiles",
+    "html_url": "https://github.com/egdev6/dotfiles",
+    "description": "Eligible but dropped via TOP_REPOS_EXCLUDE",
+    "stargazers_count": 800,
+    "fork": false,
+    "archived": false,
+    "private": false
+  }
+]

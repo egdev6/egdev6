@@ -102,6 +102,16 @@ Feel free to reach out or collaborate
 
 ## 📊 GitHub Stats
 
+**Most starred repositories**
+
+<!-- top-repos:start -->
+- [**engram-monitor**](https://github.com/egdev6/engram-monitor) — Dashboard to monitorize Engram events · ⭐ 51
+- [**mobile-agent-orchestrator**](https://github.com/egdev6/mobile-agent-orchestrator) — Guided Pi skill for a secure persistent mobile AI-agent environment on macOS and Windows with WSL2. · ⭐ 19
+- [**github-repository-bootstrap**](https://github.com/egdev6/github-repository-bootstrap) · ⭐ 18
+- [**agent-teams-docs**](https://github.com/egdev6/agent-teams-docs) — VScode extension documentation · ⭐ 11
+- [**react-boilerplate**](https://github.com/egdev6/react-boilerplate) — Personal boilerplate for react projects development · ⭐ 11
+<!-- top-repos:end -->
+
 <p align="center">
   <img width="56%" src="https://github-readme-streak-stats.herokuapp.com?user=egdev6&theme=calm&border_radius=5&date_format=n%2Fj%5B%2FY%5D&hide_border=true" />
 </p>

@@ -1,0 +1,52 @@
+# Keeps the "top repositories by stars" block in README.md up to date.
+# All rendering logic lives in scripts/top_repos.py (Python 3 standard
+# library only); this workflow only checks out the repository, runs the
+# script, and commits real changes. The script never commits or pushes.
+name: Top repositories
+
+on:
+  schedule:
+    # Daily at 04:17 UTC.
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+
+# A manual workflow_dispatch must not overlap a scheduled run.
+concurrency:
+  group: top-repos
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  TOP_N: "5"
+  # TOP_REPOS_EXCLUDE is how specific repositories are dropped from the
+  # ranking: a comma-separated list of repository names to skip (for example
+  # "dotfiles,sandbox"). Blank entries are ignored. Leave empty to include
+  # every public, non-forked, non-archived repository.
+  TOP_REPOS_EXCLUDE: ""
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Render top repositories block
+        run: python3 scripts/top_repos.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and push when README changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          # Staged-diff guard: never create an empty commit.
+          if git diff --cached --quiet; then
+            echo "No README changes; skipping commit."
+          else
+            git commit -m "chore(profile): refresh top repositories"
+            git push
+          fi
