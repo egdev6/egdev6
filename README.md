@@ -21,28 +21,6 @@ _Updated September 2026_
 - 🔧 **Improving** — [mobile-agent-orchestrator](https://github.com/egdev6/mobile-agent-orchestrator): a guided Pi skill for a secure, persistent mobile AI-agent environment.
 
 
-## 🚀 What I'm building
-
-### 🎨 Stack & Flow Design System
-Collaborative design system focused on scalability, accessibility and real-world usage.
-
-👉 https://github.com/Stack-and-Flow/design-system
-
----
-
-### 🤖 Discord Project Manager
-Portable Discord-first project operations cockpit for turning ideas into issues, specs, context, and AI-assisted workflows. discord-project-manager combines OpenClaw runtime experiments, Gentle-AI SDD practices, and Engram-backed memory in one repo so planning, coordination, and future automation share the same baseline.
-
-👉 https://github.com/egdev6/discord-project-manager
-
----
-
-### 🧠 engram-monitor
-Monitoring and observability for AI memory systems and agent workflows.
-
-👉 https://github.com/egdev6/engram-monitor
-
-
 ## 🛠️ Maintainer — Gentleman Programming
 
 Maintainer of open-source projects at [@Gentleman-Programming](https://github.com/Gentleman-Programming), an organization building agent infrastructure for developers.
@@ -59,7 +37,7 @@ Merged work:
 - [NaN Cloud per-model usage in the bar and `/gentle:usage` panel](https://github.com/Gentleman-Programming/gentle-shell/pull/1180) — gentle-shell #1180
 
 This work connects directly with:
-- engram-monitor  
+- [engram-monitor](https://github.com/egdev6/engram-monitor) — observability dashboard for AI memory systems  
 - AI agent orchestration workflows  
 
 
