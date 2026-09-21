@@ -21,7 +21,7 @@ Soy mantenedor en [@Gentleman-Programming](https://github.com/Gentleman-Programm
 _Actualizado en septiembre de 2026_
 
 - 🎬 **Construyendo** — **particle-studio**: un editor visual agnóstico de framework para animaciones reutilizables en HTML Canvas, en desarrollo privado.
-- 🤝 **Colaborando** — [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): configuración de agentes, skills y flujos multi-agente para los asistentes de código que ya usás.
+- 🤝 **Manteniendo** — [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): correcciones del estado de instalación del plugin de OpenCode.
 - 🔧 **Mejorando** — [mobile-agent-orchestrator](https://github.com/egdev6/mobile-agent-orchestrator): una skill de Pi guiada para un entorno móvil de agentes de IA seguro y persistente.
 
 
@@ -35,12 +35,9 @@ Una organización que construye infraestructura de agentes para desarrolladores.
 | --- | --- | --- |
 | [engram](https://github.com/Gentleman-Programming/engram) | Memoria persistente para agentes de código (Go, SQLite + FTS5, MCP) | APIs de store y servidor, TUI |
 | [gentle-shell](https://github.com/Gentleman-Programming/gentle-shell) | Harness de Pi para flujos de agente con criterio de arquitecto | Superficies del shell, paneles de uso |
+| [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai) | Configuración de agentes, skills y flujos multi-agente para los asistentes de código que ya usás | Estado de instalación del plugin de OpenCode |
 
-PRs mergeados:
-
-- [Endpoints `DELETE /sessions/{id}` y `DELETE /prompts/{id}`](https://github.com/Gentleman-Programming/engram/pull/174) — engram #174
-- [Confirmación de borrado de sesión en la TUI](https://github.com/Gentleman-Programming/engram/pull/444) — engram #444
-- [Uso por modelo de NaN Cloud en la barra y el panel `/gentle:usage`](https://github.com/Gentleman-Programming/gentle-shell/pull/1180) — gentle-shell #1180
+**[Mis pull requests mergeados en la org →](https://github.com/search?q=is%3Apr+author%3Aegdev6+org%3AGentleman-Programming+is%3Amerged&type=pullrequests)**
 
 Esto conecta con [engram-monitor](https://github.com/egdev6/engram-monitor), el dashboard de observabilidad que escribí para esa capa de memoria.
 
