@@ -7,9 +7,11 @@
 Senior Frontend Engineer enfocado en **flujos de trabajo de desarrollo con IA**.
 
 Construyo herramientas, sistemas y comunidades alrededor de:
-- 🤖 Agentes de IA y flujos multi-agente  
-- ⚙️ Tooling para desarrolladores y automatización  
-- 🌍 Desarrollo impulsado por la comunidad  
+- 🤖 Agentes de IA y flujos multi-agente
+- ⚙️ Tooling para desarrolladores y automatización
+- 🌍 Desarrollo impulsado por la comunidad
+
+Soy mantenedor en [@Gentleman-Programming](https://github.com/Gentleman-Programming), una organización que construye infraestructura open source para asistentes de código con IA.
 
 🌐 Sitio personal — [egdev.es](https://www.egdev.es/)
 
@@ -18,14 +20,16 @@ Construyo herramientas, sistemas y comunidades alrededor de:
 
 _Actualizado en septiembre de 2026_
 
-- 🎬 **Desarrollando** — [particle-studio](https://github.com/egdev6/particle-studio): un editor visual agnóstico de framework para animaciones reutilizables en HTML Canvas.
+- 🎬 **Construyendo** — **particle-studio**: un editor visual agnóstico de framework para animaciones reutilizables en HTML Canvas, en desarrollo privado.
 - 🤝 **Colaborando** — [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): configuración de agentes, skills y flujos multi-agente para los asistentes de código que ya usás.
 - 🔧 **Mejorando** — [mobile-agent-orchestrator](https://github.com/egdev6/mobile-agent-orchestrator): una skill de Pi guiada para un entorno móvil de agentes de IA seguro y persistente.
 
 
-## 🛠️ Mantenedor — Gentleman Programming
+## 🛠️ Dónde construyo
 
-Mantenedor de proyectos open source en [@Gentleman-Programming](https://github.com/Gentleman-Programming), una organización que construye infraestructura de agentes para desarrolladores.
+### Mantenedor — [@Gentleman-Programming](https://github.com/Gentleman-Programming)
+
+Una organización que construye infraestructura de agentes para desarrolladores.
 
 | Proyecto | Qué es | Mi alcance |
 | --- | --- | --- |
@@ -38,28 +42,18 @@ PRs mergeados:
 - [Confirmación de borrado de sesión en la TUI](https://github.com/Gentleman-Programming/engram/pull/444) — engram #444
 - [Uso por modelo de NaN Cloud en la barra y el panel `/gentle:usage`](https://github.com/Gentleman-Programming/gentle-shell/pull/1180) — gentle-shell #1180
 
-Esto conecta directo con:
-- [engram-monitor](https://github.com/egdev6/engram-monitor) — dashboard de observabilidad para sistemas de memoria de IA  
-- Flujos de orquestación de agentes  
+Esto conecta con [engram-monitor](https://github.com/egdev6/engram-monitor), el dashboard de observabilidad que escribí para esa capa de memoria.
 
+### Organizador — [@Stack-and-Flow](https://github.com/Stack-and-Flow)
 
-## 🌍 Comunidad
-
-Organizo **Stack & Flow**, una comunidad de desarrollo donde:
-
-- Construimos proyectos reales  
-- Exploramos IA aplicada al trabajo diario  
-- Compartimos conocimiento y crecemos juntos  
+Una comunidad de desarrollo donde construimos proyectos reales, exploramos IA aplicada al trabajo diario y compartimos lo que aprendemos.
 
 Nuestro proyecto insignia es el **[Stack & Flow Design System](https://github.com/Stack-and-Flow/design-system)**, un design system colaborativo pensado para escalar, ser accesible y usarse en el mundo real.
 
-💬 [Entrá al Discord de Stack & Flow](https://discord.gg/xffecBzMEQ) — comunidad de desarrollo, en español  
-🛠️ [Entrá al Discord de Gentleman Programming](https://discord.com/invite/3QVhF5vRsR) — la comunidad open source donde mantengo proyectos  
 
-👉 https://github.com/Stack-and-Flow
+## 📦 Open source propio
 
-
-## 📊 Repos más estrellados
+Lo que escribo y mantengo yo, ordenado por estrellas:
 
 <!-- top-repos:start -->
 - [**engram-monitor**](https://github.com/egdev6/engram-monitor) — Dashboard for monitoring and exploring Engram memory: sessions, observations, prompts, and stats · ⭐ 51
@@ -68,6 +62,8 @@ Nuestro proyecto insignia es el **[Stack & Flow Design System](https://github.co
 - [**agent-teams-docs**](https://github.com/egdev6/agent-teams-docs) — VScode extension documentation · ⭐ 11
 - [**react-boilerplate**](https://github.com/egdev6/react-boilerplate) — Personal boilerplate for react projects development · ⭐ 11
 <!-- top-repos:end -->
+
+<sub>La lista se actualiza sola todos los días desde la API de GitHub — ver [el workflow que la genera](.github/workflows/top-repos.yml).</sub>
 
 
 ## 🧱 Stack principal
@@ -90,8 +86,11 @@ Nuestro proyecto insignia es el **[Stack & Flow Design System](https://github.co
 ## 🤝 Conectemos
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/egdev/) → contenido sobre desarrollo, IA y tooling
-- ✖️ [X](https://x.com/egdev66) → eventos y contenido de Twitch
-- 🎥 [YouTube](https://www.youtube.com/@egdev6) → charlas, deep dives y experimentos  
-- 🎮 [Twitch](https://www.twitch.tv/egdev6/) → live coding y flujos reales  
+- ✖️ [X](https://x.com/egdev66) → eventos y anuncios de Twitch
+- 🎥 [YouTube](https://www.youtube.com/@egdev6) → charlas, deep dives y experimentos
+- 🎮 [Twitch](https://www.twitch.tv/egdev6/) → live coding y flujos reales
+- 🛠️ [Discord de Gentleman Programming](https://discord.com/invite/3QVhF5vRsR) → la comunidad open source donde mantengo proyectos
+- 💬 [Discord de Stack & Flow](https://discord.gg/xffecBzMEQ) → la comunidad de desarrollo que coordino
+- 🐙 **[Seguime en GitHub](https://github.com/egdev6)** → lo que voy publicando aparece en tu feed
 
 Escribime, o sumate a la comunidad.

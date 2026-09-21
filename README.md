@@ -7,9 +7,11 @@
 Senior Frontend Engineer focused on **AI-powered developer workflows**.
 
 I build tools, systems and communities around:
-- 🤖 AI agents & multi-agent workflows  
-- ⚙️ Developer tooling & automation  
-- 🌍 Community-driven development  
+- 🤖 AI agents & multi-agent workflows
+- ⚙️ Developer tooling & automation
+- 🌍 Community-driven development
+
+I'm a maintainer at [@Gentleman-Programming](https://github.com/Gentleman-Programming), an organization building open-source infrastructure for AI coding agents.
 
 🌐 Personal site — [egdev.es](https://www.egdev.es/)
 
@@ -18,14 +20,16 @@ I build tools, systems and communities around:
 
 _Updated September 2026_
 
-- 🎬 **Developing** — [particle-studio](https://github.com/egdev6/particle-studio): a framework-agnostic visual editor for reusable HTML Canvas animations.
+- 🎬 **Building** — **particle-studio**: a framework-agnostic visual editor for reusable HTML Canvas animations, in private development.
 - 🤝 **Collaborating** — [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): agent configuration, skills and multi-agent workflows for the coding agents you already use.
 - 🔧 **Improving** — [mobile-agent-orchestrator](https://github.com/egdev6/mobile-agent-orchestrator): a guided Pi skill for a secure, persistent mobile AI-agent environment.
 
 
-## 🛠️ Maintainer — Gentleman Programming
+## 🛠️ Where I build
 
-Maintainer of open-source projects at [@Gentleman-Programming](https://github.com/Gentleman-Programming), an organization building agent infrastructure for developers.
+### Maintainer — [@Gentleman-Programming](https://github.com/Gentleman-Programming)
+
+An organization building agent infrastructure for developers.
 
 | Project | What it is | My scope |
 | --- | --- | --- |
@@ -38,29 +42,32 @@ Merged work:
 - [TUI session delete confirmation](https://github.com/Gentleman-Programming/engram/pull/444) — engram #444
 - [NaN Cloud per-model usage in the bar and `/gentle:usage` panel](https://github.com/Gentleman-Programming/gentle-shell/pull/1180) — gentle-shell #1180
 
-This work connects directly with:
-- [engram-monitor](https://github.com/egdev6/engram-monitor) — observability dashboard for AI memory systems  
-- AI agent orchestration workflows  
+It connects with [engram-monitor](https://github.com/egdev6/engram-monitor), the observability dashboard I wrote for that memory layer.
 
+### Organizer — [@Stack-and-Flow](https://github.com/Stack-and-Flow)
 
-## 🌍 Community
-
-I’m organizing **Stack & Flow**, a developer community where we:
-
-- Build real-world projects  
-- Explore AI in development workflows  
-- Share knowledge and grow together  
+A developer community where we build real-world projects, explore AI in development workflows, and share what we learn.
 
 Our flagship project is the **[Stack & Flow Design System](https://github.com/Stack-and-Flow/design-system)**, a collaborative design system built for scalability, accessibility and real-world use.
 
-👉 https://github.com/Stack-and-Flow
 
+## 📦 Open source I own
 
-## ⚙️ Tooling & Experiments
+What I write and maintain myself, ranked by stars:
 
-- Agent teams → VSCode extension
-- Compilot CLI → code generation & automation  
-- React Boilerplate → scalable frontend architecture  
+<!-- top-repos:start -->
+- [**engram-monitor**](https://github.com/egdev6/engram-monitor) — Dashboard for monitoring and exploring Engram memory: sessions, observations, prompts, and stats · ⭐ 51
+- [**github-repository-bootstrap**](https://github.com/egdev6/github-repository-bootstrap) — Pi skill that plans and applies repeatable GitHub repository governance: labels, milestones, templates, and Projects v2 · ⭐ 19
+- [**mobile-agent-orchestrator**](https://github.com/egdev6/mobile-agent-orchestrator) — Guided Pi skill for a secure persistent mobile AI-agent environment on macOS and Windows with WSL2. · ⭐ 19
+- [**agent-teams-docs**](https://github.com/egdev6/agent-teams-docs) — VScode extension documentation · ⭐ 11
+- [**react-boilerplate**](https://github.com/egdev6/react-boilerplate) — Personal boilerplate for react projects development · ⭐ 11
+<!-- top-repos:end -->
+
+<sub>This list updates itself daily from the GitHub API — see [the workflow that does it](.github/workflows/top-repos.yml).</sub>
+
+<p align="center">
+  <img width="56%" src="https://github-readme-streak-stats.herokuapp.com?user=egdev6&theme=calm&border_radius=5&date_format=n%2Fj%5B%2FY%5D&hide_border=true" />
+</p>
 
 
 ## 🧱 Core Stack
@@ -80,42 +87,14 @@ Our flagship project is the **[Stack & Flow Design System](https://github.com/St
 </div>
 
 
-## 📢 Content & Platforms
-
-<div align="center">
-
-[![LinkedIn](https://img.shields.io/badge/Linkedin-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/egdev/)
-[![Twitch](https://img.shields.io/badge/Twitch-A970FF?style=for-the-badge&logo=twitch&logoColor=white)](https://www.twitch.tv/egdev6/)
-[![YouTube](https://img.shields.io/badge/Youtube-FF0033?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@egdev6)
-[![X](https://img.shields.io/badge/x-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/egdev66)
-
-</div>
-
-
 ## 🤝 Let's connect
 
-- 💼 [LinkedIn](https://www.linkedin.com/in/egdev/) → where I share content about dev, AI & tooling
-- ✖️ [X](https://x.com/egdev66) → where I share events and Twitch content
-- 🎥 [YouTube](https://www.youtube.com/@egdev6) → talks, deep dives and experiments  
-- 🎮 [Twitch](https://www.twitch.tv/egdev6/) → live coding & real workflows  
-- 💬 [Stack & Flow on Discord](https://discord.gg/xffecBzMEQ) → the developer community I run  
-- 🛠️ [Gentleman Programming on Discord](https://discord.com/invite/3QVhF5vRsR) → the open-source org where I maintain projects  
+- 💼 [LinkedIn](https://www.linkedin.com/in/egdev/) → content about dev, AI and tooling
+- ✖️ [X](https://x.com/egdev66) → events and Twitch announcements
+- 🎥 [YouTube](https://www.youtube.com/@egdev6) → talks, deep dives and experiments
+- 🎮 [Twitch](https://www.twitch.tv/egdev6/) → live coding and real workflows
+- 🛠️ [Gentleman Programming on Discord](https://discord.com/invite/3QVhF5vRsR) → the open-source org where I maintain projects
+- 💬 [Stack & Flow on Discord](https://discord.gg/xffecBzMEQ) → the developer community I run
+- 🐙 **[Follow me on GitHub](https://github.com/egdev6)** → whatever I ship next shows up in your feed
 
-Feel free to reach out or collaborate  
-
-
-## 📊 GitHub Stats
-
-**Most starred repositories**
-
-<!-- top-repos:start -->
-- [**engram-monitor**](https://github.com/egdev6/engram-monitor) — Dashboard for monitoring and exploring Engram memory: sessions, observations, prompts, and stats · ⭐ 51
-- [**github-repository-bootstrap**](https://github.com/egdev6/github-repository-bootstrap) — Pi skill that plans and applies repeatable GitHub repository governance: labels, milestones, templates, and Projects v2 · ⭐ 19
-- [**mobile-agent-orchestrator**](https://github.com/egdev6/mobile-agent-orchestrator) — Guided Pi skill for a secure persistent mobile AI-agent environment on macOS and Windows with WSL2. · ⭐ 19
-- [**agent-teams-docs**](https://github.com/egdev6/agent-teams-docs) — VScode extension documentation · ⭐ 11
-- [**react-boilerplate**](https://github.com/egdev6/react-boilerplate) — Personal boilerplate for react projects development · ⭐ 11
-<!-- top-repos:end -->
-
-<p align="center">
-  <img width="56%" src="https://github-readme-streak-stats.herokuapp.com?user=egdev6&theme=calm&border_radius=5&date_format=n%2Fj%5B%2FY%5D&hide_border=true" />
-</p>
+Feel free to reach out or collaborate.
