@@ -21,7 +21,7 @@ I'm a maintainer at [@Gentleman-Programming](https://github.com/Gentleman-Progra
 _Updated September 2026_
 
 - 🎬 **Building** — **particle-studio**: a framework-agnostic visual editor for reusable HTML Canvas animations, in private development.
-- 🤝 **Collaborating** — [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): agent configuration, skills and multi-agent workflows for the coding agents you already use.
+- 🤝 **Maintaining** — [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): OpenCode plugin install-state fixes.
 - 🔧 **Improving** — [mobile-agent-orchestrator](https://github.com/egdev6/mobile-agent-orchestrator): a guided Pi skill for a secure, persistent mobile AI-agent environment.
 
 
@@ -35,12 +35,9 @@ An organization building agent infrastructure for developers.
 | --- | --- | --- |
 | [engram](https://github.com/Gentleman-Programming/engram) | Persistent memory for AI coding agents (Go, SQLite + FTS5, MCP) | Store and server APIs, TUI |
 | [gentle-shell](https://github.com/Gentleman-Programming/gentle-shell) | Pi harness for senior-architect agent workflows | Shell surfaces, usage panels |
+| [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai) | Agent configuration, skills and multi-agent workflows for the coding agents you already use | OpenCode plugin install state |
 
-Merged work:
-
-- [DELETE /sessions/{id} and DELETE /prompts/{id} endpoints](https://github.com/Gentleman-Programming/engram/pull/174) — engram #174
-- [TUI session delete confirmation](https://github.com/Gentleman-Programming/engram/pull/444) — engram #444
-- [NaN Cloud per-model usage in the bar and `/gentle:usage` panel](https://github.com/Gentleman-Programming/gentle-shell/pull/1180) — gentle-shell #1180
+**[My merged pull requests in the org →](https://github.com/search?q=is%3Apr+author%3Aegdev6+org%3AGentleman-Programming+is%3Amerged&type=pullrequests)**
 
 It connects with [engram-monitor](https://github.com/egdev6/engram-monitor), the observability dashboard I wrote for that memory layer.
 
