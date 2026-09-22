@@ -53,8 +53,8 @@ Our flagship project is the **[Stack & Flow Design System](https://github.com/St
 What I write and maintain myself, ranked by stars:
 
 <!-- top-repos:start -->
-- [**engram-monitor**](https://github.com/egdev6/engram-monitor) — Dashboard for monitoring and exploring Engram memory: sessions, observations, prompts, and stats · ⭐ 51
-- [**github-repository-bootstrap**](https://github.com/egdev6/github-repository-bootstrap) — Pi skill that plans and applies repeatable GitHub repository governance: labels, milestones, templates, and Projects v2 · ⭐ 19
+- [**engram-monitor**](https://github.com/egdev6/engram-monitor) — Dashboard for monitoring and exploring Engram memory: sessions, observations, prompts, and stats · ⭐ 53
+- [**github-repository-bootstrap**](https://github.com/egdev6/github-repository-bootstrap) — Pi skill that plans and applies repeatable GitHub repository governance: labels, milestones, templates, and Projects v2 · ⭐ 20
 - [**mobile-agent-orchestrator**](https://github.com/egdev6/mobile-agent-orchestrator) — Guided Pi skill for a secure persistent mobile AI-agent environment on macOS and Windows with WSL2. · ⭐ 19
 - [**agent-teams-docs**](https://github.com/egdev6/agent-teams-docs) — VScode extension documentation · ⭐ 11
 - [**react-boilerplate**](https://github.com/egdev6/react-boilerplate) — Personal boilerplate for react projects development · ⭐ 11
