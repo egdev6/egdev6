@@ -1,4 +1,5 @@
-<img width="1280" height="320" alt="egdev-banner-github-readme-1280x320" src="https://github.com/user-attachments/assets/be9ba3ba-57f7-4c88-9d11-88492972edc8" />
+<img width="1280" height="320" alt="egdev-banner-github-readme-1280x320" src="https://github.com/user-attachments/assets/8c7f7c23-14e2-4ff7-a228-48bdd08f2c83" />
+
 
 🇬🇧 **English** · 🇪🇸 [Español](README.es.md)
 
