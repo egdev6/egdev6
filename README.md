@@ -1,4 +1,5 @@
-<img width="5120" height="1440" alt="Banner: Quique (egdev6), Senior Frontend Engineer" src="https://github.com/user-attachments/assets/602e6989-57bf-413a-bb4e-38a92effb97b" />
+<img width="1500" height="500" alt="egdev-banner-x-1500x500" src="https://github.com/user-attachments/assets/f1dfd29b-4eff-4110-8a8d-b46cfe88b8eb" />
+
 
 🇬🇧 **English** · 🇪🇸 [Español](README.es.md)
 
