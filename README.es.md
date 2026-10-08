@@ -13,8 +13,8 @@
 
 [![Followers](https://img.shields.io/github/followers/egdev6?style=for-the-badge&labelColor=0A0A0A&color=FF0036&logo=github&logoColor=white&label=followers)](https://github.com/egdev6)
 [![Stars](https://img.shields.io/github/stars/egdev6?affiliations=OWNER&style=for-the-badge&labelColor=0A0A0A&color=FF0036&label=stars)](https://github.com/egdev6?tab=repositories&sort=stargazers)
-[![Twitch](https://img.shields.io/twitch/status/egdev6?style=for-the-badge&labelColor=0A0A0A&color=9146FF&logo=twitch&logoColor=white)](https://www.twitch.tv/egdev6)
-[![YouTube](https://img.shields.io/badge/YouTube-%40egdev6-FF0000?style=for-the-badge&labelColor=0A0A0A&logo=youtube&logoColor=white)](https://www.youtube.com/@egdev6)
+[![Twitch](https://img.shields.io/twitch/status/egdev6?style=for-the-badge&labelColor=0A0A0A&color=FF0036&logo=twitch&logoColor=white)](https://www.twitch.tv/egdev6)
+[![YouTube](https://img.shields.io/badge/YouTube-%40egdev6-FF0000?style=for-the-badge&labelColor=0A0A0A&color=FF0036&logo=youtube&logoColor=white)](https://www.youtube.com/@egdev6)
 [![Web](https://img.shields.io/badge/web-egdev.es-FF0036?style=for-the-badge&labelColor=0A0A0A&logo=googlechrome&logoColor=white)](https://www.egdev.es/)
 
 </div>
