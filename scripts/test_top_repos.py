@@ -8,6 +8,7 @@ Never touches the real README.md.
 
 from __future__ import annotations
 
+import json
 import os
 import re
 import subprocess
@@ -18,30 +19,37 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRIPT = os.path.join(REPO_ROOT, "scripts", "top_repos.py")
 FIXTURE = os.path.join(REPO_ROOT, "scripts", "fixtures", "repos.json")
 
+TABLE_HEADER_LINE = "| Proyecto | description | stars |"
+TABLE_SEPARATOR_LINE = "| --- | --- | ---: |"
+
 EXPECTED_BLOCK_EXCLUDE_DOTFILES = """\
-- [**mega-tool**](https://github.com/egdev6/mega-tool) — A CLI toolbox for everyday automation · ⭐ 1200
-- [**web-frame**](https://github.com/egdev6/web-frame) — A tiny web framework. Wrapped across two lines. · ⭐ 950
-- [**alpha-lib**](https://github.com/egdev6/alpha-lib) — Small utility library · ⭐ 500
-- [**beta-lib**](https://github.com/egdev6/beta-lib) — Another small library, tied with alpha-lib on stars · ⭐ 500
-- [**silent-repo**](https://github.com/egdev6/silent-repo) · ⭐ 300
+| Proyecto | description | stars |
+| --- | --- | ---: |
+| [**mega-tool**](https://github.com/egdev6/mega-tool) | A CLI toolbox for everyday automation | ⭐ 1200 |
+| [**web-frame**](https://github.com/egdev6/web-frame) | A tiny web framework. Wrapped across two lines. | ⭐ 950 |
+| [**alpha-lib**](https://github.com/egdev6/alpha-lib) | Small utility library | ⭐ 500 |
+| [**beta-lib**](https://github.com/egdev6/beta-lib) | Another small library, tied with alpha-lib on stars | ⭐ 500 |
+| [**silent-repo**](https://github.com/egdev6/silent-repo) | — | ⭐ 300 |
 """
 
 EXPECTED_BLOCK_EMPTY_EXCLUDE = """\
-- [**mega-tool**](https://github.com/egdev6/mega-tool) — A CLI toolbox for everyday automation · ⭐ 1200
-- [**web-frame**](https://github.com/egdev6/web-frame) — A tiny web framework. Wrapped across two lines. · ⭐ 950
-- [**dotfiles**](https://github.com/egdev6/dotfiles) — Eligible but dropped via TOP_REPOS_EXCLUDE · ⭐ 800
-- [**alpha-lib**](https://github.com/egdev6/alpha-lib) — Small utility library · ⭐ 500
-- [**beta-lib**](https://github.com/egdev6/beta-lib) — Another small library, tied with alpha-lib on stars · ⭐ 500
+| Proyecto | description | stars |
+| --- | --- | ---: |
+| [**mega-tool**](https://github.com/egdev6/mega-tool) | A CLI toolbox for everyday automation | ⭐ 1200 |
+| [**web-frame**](https://github.com/egdev6/web-frame) | A tiny web framework. Wrapped across two lines. | ⭐ 950 |
+| [**dotfiles**](https://github.com/egdev6/dotfiles) | Eligible but dropped via TOP_REPOS_EXCLUDE | ⭐ 800 |
+| [**alpha-lib**](https://github.com/egdev6/alpha-lib) | Small utility library | ⭐ 500 |
+| [**beta-lib**](https://github.com/egdev6/beta-lib) | Another small library, tied with alpha-lib on stars | ⭐ 500 |
 """
 
 EXPECTED_ESCAPE_LINE = (
-    "- [**markdown-tricky**](https://github.com/egdev6/markdown-tricky)"
-    " — Tricky \\[x\\]\\(y\\) \\*bold\\* \\<b\\>html\\</b\\> and \\_under\\_ · ⭐ 290\n"
+    "| [**markdown-tricky**](https://github.com/egdev6/markdown-tricky)"
+    " | Tricky \\[x\\]\\(y\\) \\*bold\\* \\<b\\>html\\</b\\> and \\_under\\_ | ⭐ 290 |\n"
 )
 
 EXPECTED_NAME_ESCAPE_LINE = (
-    "- [**esc-name\\]with\\\\slash**](https://github.com/egdev6/esc-name]with\\slash)"
-    " — Name has a \\] bracket and a \\\\ backslash · ⭐ 20\n"
+    "| [**esc-name\\]with\\\\slash**](https://github.com/egdev6/esc-name]with\\slash)"
+    " | Name has a \\] bracket and a \\\\ backslash | ⭐ 20 |\n"
 )
 
 README_TEMPLATE = """\
@@ -101,7 +109,7 @@ def case_1() -> None:
 
 def case_2() -> None:
     stdout, observed = dry_run_block("")
-    has_dotfiles = "- [**dotfiles**](https://github.com/egdev6/dotfiles)" in stdout
+    has_dotfiles = "| [**dotfiles**](https://github.com/egdev6/dotfiles)" in stdout
     passed = observed == "returncode=0 stderr=" and stdout == EXPECTED_BLOCK_EMPTY_EXCLUDE and has_dotfiles
     report(2, "dry-run with empty exclude list renders dotfiles and the exact expected block", passed, observed + "\n  stdout=" + repr(stdout))
 
@@ -627,6 +635,112 @@ def case_17_workflow_drift() -> None:
     report(17, "the workflow stages exactly the TOP_REPOS_README targets from one source of truth", passed, observed)
 
 
+def split_table_cells(line: str) -> list[str]:
+    """Split a markdown table row on unescaped pipes and drop the empty edges."""
+    cells = re.split(r"(?<!\\)\|", line)
+    return [cell.strip() for cell in cells[1:-1]] if len(cells) >= 2 else []
+
+
+def case_18_table_shape() -> None:
+    """TABLE 1: the rendered block is a three-column table, not a bullet list."""
+    stdout, observed = dry_run_block("dotfiles")
+    lines = stdout.splitlines()
+    header_ok = len(lines) >= 2 and lines[0] == TABLE_HEADER_LINE and lines[1] == TABLE_SEPARATOR_LINE
+    data_rows = lines[2:]
+    widths = [len(split_table_cells(line)) for line in data_rows]
+    passed = (
+        observed == "returncode=0 stderr="
+        and header_ok
+        and len(data_rows) == 5
+        and widths == [3, 3, 3, 3, 3]
+    )
+    report(
+        18,
+        "rendered block is a three-column table with the literal header and separator",
+        passed,
+        observed + f" header_ok={header_ok} data_rows={len(data_rows)} row_widths={widths}",
+    )
+
+
+def case_19_missing_description_cell() -> None:
+    """TABLE 2: a missing or whitespace-only description renders the literal em dash cell."""
+    stdout, observed = dry_run_block("dotfiles")
+    silent_ok = "| [**silent-repo**](https://github.com/egdev6/silent-repo) | — | ⭐ 300 |\n" in stdout
+
+    edge = [
+        {
+            "name": "null-desc",
+            "html_url": "https://github.com/egdev6/null-desc",
+            "description": None,
+            "stargazers_count": 7,
+            "fork": False,
+            "archived": False,
+            "private": False,
+        },
+        {
+            "name": "blank-desc",
+            "html_url": "https://github.com/egdev6/blank-desc",
+            "description": "   \t ",
+            "stargazers_count": 3,
+            "fork": False,
+            "archived": False,
+            "private": False,
+        },
+    ]
+    with tempfile.TemporaryDirectory() as directory:
+        path = os.path.join(directory, "repos.json")
+        with open(path, "w", encoding="utf-8") as handle:
+            json.dump(edge, handle)
+        result = run_cli(["--dry-run", "--input", path], {})
+    null_ok = "| [**null-desc**](https://github.com/egdev6/null-desc) | — | ⭐ 7 |\n" in result.stdout
+    blank_ok = "| [**blank-desc**](https://github.com/egdev6/blank-desc) | — | ⭐ 3 |\n" in result.stdout
+    edge_ok = result.returncode == 0 and null_ok and blank_ok
+    passed = observed == "returncode=0 stderr=" and silent_ok and edge_ok
+    report(
+        19,
+        "missing and whitespace-only descriptions render the literal em dash cell",
+        passed,
+        observed + f" silent_row_ok={silent_ok} null_row_ok={null_ok} blank_row_ok={blank_ok} returncode={result.returncode}",
+    )
+
+
+def case_20_pipe_and_newline_description() -> None:
+    """TABLE 3: pipes are escaped and newlines collapsed so each row keeps three cells."""
+    edge = [
+        {
+            "name": "pipe-repo",
+            "html_url": "https://github.com/egdev6/pipe-repo",
+            "description": "A | pipe and\nwrapped line",
+            "stargazers_count": 42,
+            "fork": False,
+            "archived": False,
+            "private": False,
+        },
+    ]
+    with tempfile.TemporaryDirectory() as directory:
+        path = os.path.join(directory, "repos.json")
+        with open(path, "w", encoding="utf-8") as handle:
+            json.dump(edge, handle)
+        result = run_cli(["--dry-run", "--input", path], {})
+    expected_row = "| [**pipe-repo**](https://github.com/egdev6/pipe-repo) | A \\| pipe and wrapped line | ⭐ 42 |"
+    lines = result.stdout.splitlines()
+    expected_cells = ["[**pipe-repo**](https://github.com/egdev6/pipe-repo)", "A \\| pipe and wrapped line", "⭐ 42"]
+    cells_ok = len(lines) == 3 and split_table_cells(lines[2]) == expected_cells
+    passed = (
+        result.returncode == 0
+        and expected_row in result.stdout
+        and cells_ok
+        and result.stdout.count("\n") == 3
+    )
+    report(
+        20,
+        "pipes and newlines in a description stay inside a single, three-cell row",
+        passed,
+        f"returncode={result.returncode} stderr={result.stderr.strip()} expected_row_ok={expected_row in result.stdout} "
+        f"cells_ok={cells_ok} line_count={result.stdout.count(chr(10))}",
+    )
+
+
 def main() -> int:
     case_1()
     case_2()
@@ -644,6 +758,9 @@ def main() -> int:
     case_15_list_parsing()
     case_16_invalid_targets()
     case_17_workflow_drift()
+    case_18_table_shape()
+    case_19_missing_description_cell()
+    case_20_pipe_and_newline_description()
     if failures:
         print(f"FAILED: {len(failures)} case(s) failed: {', '.join(failures)}")
         return 1

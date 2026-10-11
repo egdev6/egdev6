@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Render a "top repositories by stars" markdown block into README targets.
+"""Render a "top repositories by stars" markdown table into README targets.
 
 Fetches the public repositories of a GitHub user (or reads them from a JSON
 file with --input), filters/sorts them deterministically, and replaces only
 the content between the ``<!-- top-repos:start -->`` and
-``<!-- top-repos:end -->`` marker lines in every README target.
+``<!-- top-repos:end -->`` marker lines in every README target. The rendered
+block is a three-column markdown table (``Proyecto``, ``description``,
+``stars``).
 
 The target list comes from the comma-separated ``TOP_REPOS_README``
 environment variable (default ``README.md``). Targets are validated
@@ -38,6 +40,13 @@ PER_PAGE = 100
 MAX_PAGES = 10
 REQUEST_TIMEOUT_SECONDS = 30
 USER_AGENT = "egdev6-profile-top-repos/1.0"
+
+# The block is always a three-column markdown table. The star column is
+# right-aligned in the separator. The header text is shared by every target
+# (README.md and README.es.md alike), so no per-target localization exists.
+TABLE_HEADER = "| Proyecto | description | stars |"
+TABLE_SEPARATOR = "| --- | --- | ---: |"
+EMPTY_DESCRIPTION_CELL = "—"
 
 
 # ---------------------------------------------------------------------------
@@ -188,9 +197,11 @@ def _normalize_description(description: Any) -> str | None:
 
 # ASCII punctuation markdown would otherwise interpret when embedded mid-line:
 # emphasis (*), links and images ([ ] ( )), code spans (`), raw HTML (< >),
-# and the remaining punctuation it treats specially. Periods and hyphens are
-# excluded: they are literal in this embedded position and escaping them
-# would alter already-published blocks.
+# and the remaining punctuation it treats specially. ``|`` matters twice over
+# here: it opens/ends emphasis-like markup and it delimits the table cells,
+# so an unescaped pipe in a name or description would split a row. Periods
+# and hyphens are excluded: they are literal in this embedded position and
+# escaping them would alter already-published blocks.
 _MARKDOWN_ESCAPE_PATTERN = re.compile(r"([\\`*\[\](){}#<>|~!])")
 # Underscore opens or closes emphasis only at a word boundary; an intraword
 # underscore (as in TOP_REPOS_EXCLUDE) is always literal in CommonMark and
@@ -201,13 +212,14 @@ _MARKDOWN_UNDERSCORE_PATTERN = re.compile(r"(?<![A-Za-z0-9])_|_(?![A-Za-z0-9])")
 def escape_markdown(text: str) -> str:
     """Backslash-escape the markdown control characters in ``text``.
 
-    Repository names and descriptions are embedded verbatim into a public
-    README, so characters markdown would otherwise interpret must be
-    escaped: emphasis (``*`` and word-boundary ``_``), links and images
-    (``[``, ``]``, ``(``, ``)``), code spans (backtick), raw HTML (``<``,
-    ``>``), and the remaining punctuation markdown treats specially
-    (``\\``, ``{``, ``}``, ``#``, ``!``, ``|``, ``~``). Intraword
-    underscores are always literal in CommonMark and stay unescaped.
+    Repository names and descriptions are embedded into public README table
+    cells, so characters markdown would otherwise interpret must be escaped:
+    emphasis (``*`` and word-boundary ``_``), links and images (``[``, ``]``,
+    ``(``, ``)``), code spans (backtick), raw HTML (``<``, ``>``), and the
+    remaining punctuation markdown treats specially (``\\``, ``{``, ``}``,
+    ``#``, ``!``, ``|``, ``~``). Escaping ``|`` also keeps the row's table
+    cell boundaries intact. Intraword underscores are always literal in
+    CommonMark and stay unescaped.
     Every escape is rendering-safe: CommonMark renders a backslash-escaped
     ASCII punctuation character as the bare character.
     """
@@ -216,23 +228,28 @@ def escape_markdown(text: str) -> str:
 
 
 def render_repository_line(repository: dict[str, Any]) -> str:
-    """Render one markdown line for a repository."""
-    description = _normalize_description(repository["description"])
+    """Render one three-column markdown table row for a repository.
+
+    The row is ``| [**name**](url) | description | ⭐ stars |``. The
+    description cell is the escaped single-line description, or a literal
+    em dash when it is missing or blank; the star cell holds the raw textual
+    count (no shield badge).
+    """
     name = escape_markdown(repository["name"])
     # html_url is rendered unescaped on purpose: it is trusted because the
     # GitHub API only ever returns https://github.com/<owner>/<repo>, and
     # --input is a test-only path that the workflow never uses.
-    base = f"- [**{name}**]({repository['html_url']}) · ⭐ {repository['stars']}"
-    if description:
-        return f"- [**{name}**]({repository['html_url']}) — {escape_markdown(description)} · ⭐ {repository['stars']}"
-    return base
+    link = f"[**{name}**]({repository['html_url']})"
+    description = _normalize_description(repository["description"])
+    description_cell = escape_markdown(description) if description else EMPTY_DESCRIPTION_CELL
+    return f"| {link} | {description_cell} | ⭐ {repository['stars']} |"
 
 
 def render_block(repositories: list[dict[str, Any]]) -> list[str]:
-    """Render the markdown lines of the block; the block must not be empty."""
+    """Render a three-column markdown table; the block must not be empty."""
     if not repositories:
         raise RuntimeError("Rendered block is empty: no eligible repositories to display")
-    return [render_repository_line(repository) for repository in repositories]
+    return [TABLE_HEADER, TABLE_SEPARATOR, *(render_repository_line(repository) for repository in repositories)]
 
 
 # ---------------------------------------------------------------------------
