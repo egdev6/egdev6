@@ -84,6 +84,7 @@ Lo que escribo y mantengo yo, ordenado por estrellas:
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/egdev/) → contenido sobre desarrollo, IA y tooling
 - ✖️ [X](https://x.com/egdev66) → eventos y anuncios de Twitch
+- 🎵 [TikTok](https://www.tiktok.com/@egdev.es)
 - 🎥 [YouTube](https://www.youtube.com/@egdev6) → charlas, deep dives y experimentos
 - 🎮 [Twitch](https://www.twitch.tv/egdev6/) → live coding y flujos reales
 - 🛠️ [Discord de Gentleman Programming](https://discord.com/invite/3QVhF5vRsR) → la comunidad open source donde mantengo proyectos

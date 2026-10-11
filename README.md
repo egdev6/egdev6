@@ -88,6 +88,7 @@ What I write and maintain myself, ranked by stars:
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/egdev/) → content about dev, AI and tooling
 - ✖️ [X](https://x.com/egdev66) → events and Twitch announcements
+- 🎵 [TikTok](https://www.tiktok.com/@egdev.es)
 - 🎥 [YouTube](https://www.youtube.com/@egdev6) → talks, deep dives and experiments
 - 🎮 [Twitch](https://www.twitch.tv/egdev6/) → live coding and real workflows
 - 🛠️ [Gentleman Programming on Discord](https://discord.com/invite/3QVhF5vRsR) → the open-source org where I maintain projects
