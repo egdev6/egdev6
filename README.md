@@ -121,6 +121,14 @@ Feel free to reach out or collaborate.
 <!-- egdev:footer:start -->
 ---
 
+- 💼 [LinkedIn](https://www.linkedin.com/in/egdev/) → content about dev, AI and tooling
+- ✖️ [X](https://x.com/egdev66) → events and Twitch announcements
+- 🎵 [TikTok](https://www.tiktok.com/@egdev.es)
+- 🎥 [YouTube](https://www.youtube.com/@egdev6) → talks, deep dives and experiments
+- 🎮 [Twitch](https://www.twitch.tv/egdev6/) → live coding and real workflows
+- 🛠️ [Gentleman Programming on Discord](https://discord.com/invite/3QVhF5vRsR) → the open-source org where I maintain projects
+- 💬 [Stack & Flow on Discord](https://discord.gg/xffecBzMEQ) → the developer community I run
+- 🐙 **[Follow me on GitHub](https://github.com/egdev6)** → whatever I ship next shows up in your feed
 <div align="center">
 
 **⭐ If any of my projects is useful to you, consider giving it a star on GitHub ⭐**
