@@ -107,6 +107,7 @@ Our flagship project is the **[Stack & Flow Design System](https://github.com/St
 <!-- egdev:contact:start -->
 | | |
 |---|---|
+| [![TikTok](https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok&logoColor=white)](https://www.tiktok.com/@egdev.es) | @egdev.es |
 | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/egdev6/) | Content about dev, AI and tooling |
 | [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@egdev6) | Talks, deep dives and experiments |
 | [![Twitch](https://img.shields.io/badge/Twitch-9146FF?style=for-the-badge&logo=twitch&logoColor=white)](https://www.twitch.tv/egdev6/) | Live coding and real workflows, every Wednesday |
@@ -121,14 +122,6 @@ Feel free to reach out or collaborate.
 <!-- egdev:footer:start -->
 ---
 
-- 💼 [LinkedIn](https://www.linkedin.com/in/egdev/) → content about dev, AI and tooling
-- ✖️ [X](https://x.com/egdev66) → events and Twitch announcements
-- 🎵 [TikTok](https://www.tiktok.com/@egdev.es)
-- 🎥 [YouTube](https://www.youtube.com/@egdev6) → talks, deep dives and experiments
-- 🎮 [Twitch](https://www.twitch.tv/egdev6/) → live coding and real workflows
-- 🛠️ [Gentleman Programming on Discord](https://discord.com/invite/3QVhF5vRsR) → the open-source org where I maintain projects
-- 💬 [Stack & Flow on Discord](https://discord.gg/xffecBzMEQ) → the developer community I run
-- 🐙 **[Follow me on GitHub](https://github.com/egdev6)** → whatever I ship next shows up in your feed
 <div align="center">
 
 **⭐ If any of my projects is useful to you, consider giving it a star on GitHub ⭐**
