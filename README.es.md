@@ -46,8 +46,8 @@ Lo que escribo y mantengo yo, ordenado por estrellas:
 | [**engram-monitor**](https://github.com/egdev6/engram-monitor) | Dashboard for monitoring and exploring Engram memory: sessions, observations, prompts, and stats | ⭐ 56 |
 | [**mobile-agent-orchestrator**](https://github.com/egdev6/mobile-agent-orchestrator) | Guided Pi skill for a secure persistent mobile AI-agent environment on macOS and Windows with WSL2. | ⭐ 26 |
 | [**github-repository-bootstrap**](https://github.com/egdev6/github-repository-bootstrap) | Pi skill that plans and applies repeatable GitHub repository governance: labels, milestones, templates, and Projects v2 | ⭐ 22 |
+| [**quorb**](https://github.com/egdev6/quorb) | Your AI quotas, always in sight. Edge-docked usage rings for Claude, Codex, Gemini, Cursor, Copilot, OpenRouter and more on Windows: live limits, burn rate, history and alerts. | ⭐ 14 |
 | [**agent-teams-docs**](https://github.com/egdev6/agent-teams-docs) | VScode extension documentation | ⭐ 11 |
-| [**react-boilerplate**](https://github.com/egdev6/react-boilerplate) | Personal boilerplate for react projects development | ⭐ 11 |
 <!-- top-repos:end -->
 
 <sub>La lista se actualiza sola cada día desde la API de GitHub. Puedes ver [el workflow que la genera](.github/workflows/top-repos.yml).</sub>
