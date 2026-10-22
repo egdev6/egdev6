@@ -45,7 +45,7 @@ Lo que escribo y mantengo yo, ordenado por estrellas:
 | --- | --- | ---: |
 | [**engram-monitor**](https://github.com/egdev6/engram-monitor) | Dashboard for monitoring and exploring Engram memory: sessions, observations, prompts, and stats | ⭐ 57 |
 | [**mobile-agent-orchestrator**](https://github.com/egdev6/mobile-agent-orchestrator) | Guided Pi skill for a secure persistent mobile AI-agent environment on macOS and Windows with WSL2. | ⭐ 28 |
-| [**quorb**](https://github.com/egdev6/quorb) | Your AI quotas, always in sight. Edge-docked usage rings for Claude, Codex, Gemini, Cursor, Copilot, OpenRouter and more on Windows: live limits, burn rate, history and alerts. | ⭐ 26 |
+| [**quorb**](https://github.com/egdev6/quorb) | Your AI quotas, always in sight. Edge-docked usage rings for Claude, Codex, Gemini, Cursor, Copilot, OpenRouter and more on Windows: live limits, burn rate, history and alerts. | ⭐ 28 |
 | [**github-repository-bootstrap**](https://github.com/egdev6/github-repository-bootstrap) | Pi skill that plans and applies repeatable GitHub repository governance: labels, milestones, templates, and Projects v2 | ⭐ 22 |
 | [**agent-teams-docs**](https://github.com/egdev6/agent-teams-docs) | VScode extension documentation | ⭐ 11 |
 <!-- top-repos:end -->
