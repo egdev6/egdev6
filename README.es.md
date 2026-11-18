@@ -32,9 +32,9 @@ Soy mantenedor en [@Gentleman-Programming](https://github.com/Gentleman-Programm
 
 _Actualizado en septiembre de 2026_
 
-- 🎬 **Construyendo** — **particle-studio**: un editor visual, independiente del framework, para animaciones reutilizables en HTML Canvas, en desarrollo privado.
-- 🤝 **Manteniendo** — [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): correcciones del estado de instalación del plugin de OpenCode.
-- 🔧 **Mejorando** — [mobile-agent-orchestrator](https://github.com/egdev6/mobile-agent-orchestrator): una skill guiada de Pi para tener un entorno móvil de agentes de IA seguro y persistente.
+- 🎬 **Construyendo** — **egdev ecosystem**: varias aplicaciones para el trabajo con agentes IA por MCP
+- 🤝 **Manteniendo** — [gentle-ai](https://github.com/Gentleman-Programming/gentle-ai): Ecosistema gentle como harness
+- 🔧 **Mejorando** — [quorb](https://github.com/egdev6/quorb): Tus cuotas de IA, siempre a la vista
 
 ## Open source propio
 
